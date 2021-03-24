@@ -1,5 +1,5 @@
 # PhotoShape 
-PhotoShape est un éditeur basique d'images en python
+PhotoShape est un éditeur basique d'images en python nnrekjfrnkn je suis milo
 
 #### Rappel commandes git :
 
@@ -23,5 +23,6 @@ Pour apporter une modif sur github (les [] sont à enlever):
 - *si tu voies un truc du style `print(f"Bonjour {prénom}")` c'est un formattage de string propre à python :*
 *tu met un f avant les guillemets et tout ce qui va être entre acolades dans les guillemets (ici `prénom`) sera considéré comme une variable*
 *en gros ca affiche la variable en question directement en string peut importe son type*
-*ici : `print(f"Bonjour {prénom}")` revient à `print("Bonjour "+ str(prénom))`*
+
+### ici : `print(f"Bonjour {prénom}")` revient à `print("Bonjour "+ str(prénom))`
 
