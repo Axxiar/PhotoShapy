@@ -3,14 +3,14 @@ PhotoShape est un éditeur basique d'images en python
 
 #### Rappel commandes git :
 
-- git clone [lien du dépo] =
+- git clone [lien du dépo] = créer un dossier qui contient tout ce qui est sur le dépot en ligne
 - git pull = récupérer toutes les modifs faites sur le depot par les autres
 
 Pour apporter une modif sur github (les [] sont à enlever):
 
-1) `git checkout [branche]`                *te déplace dans la branche où tu as fait tes modifs (main à éviter)*
-2) `git add [fichier] ou git add .`        `git add .` *ajoutera tous les fichiers*
-3) `git commit -m "nom_du_commit"`         *par exemple :* `git commit -m "ajout d'un bouton qui ouvre une fenêtre"`
+1) `git checkout [branche]`            :    (*te déplace dans la branche où tu as fait tes modifs (main à éviter)*)
+2) `git add [fichier] ou git add .`    :    (`git add .` *ajoutera tous les fichiers*)
+3) `git commit -m "nom_du_commit"`     :    (*par exemple :* `git commit -m "ajout d'un bouton qui ouvre une fenêtre"`)
 4) `git push`
 
 
