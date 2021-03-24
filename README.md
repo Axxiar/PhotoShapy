@@ -1,5 +1,5 @@
 # PhotoShape 
-PhotoShape est un éditeur basique d'images en python
+PhotoShape est un éditeur basique d'images en python nnrekjfrnkn
 
 #### Rappel commandes git :
 
