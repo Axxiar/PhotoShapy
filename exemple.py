@@ -7,33 +7,38 @@ from PIL import Image
 # on charge l'image 'fond_ecran.jfif' à l'avance pour juste avoir à l'afficher après
 image = Image.open('fond_ecran.jfif')                     
 
-# fonction qui ouvre notre image préchargée ^
-def openimg():                                            
+def openimg():    
+    """fonction qui ouvre notre image préchargée ^"""
+    
     image.show()                                            
-
-
-# fonction qui modifie notre image :
+ 
 def rotate():
+    """fonction qui tourne notre image de 45° à gauche"""
+    
     global image
     image = image.rotate(45)
     image.show()
 
-# fonction qui détruit la fenêtre sur laquelle tu es:
-def destroy(event):                                         
+def destroy(event):
+    """fonction qui détruit la fenêtre sur laquelle tu es:"""
+    
     event.widget.destroy()                                      # on détruit la fenêtre
     print(f'la fenêtre :  {event.widget} a été fermée\n')       # on print le nom de la fenêtre fermée
 
-# fonction qui créer une autre fenêtre avec un texte "bonjoir" et qui aura la possibilité d'être fermée si on appuie sur la touche Echap lorsqu'on est dessus :
-def openwindow():                                           
+def openwindow():          
+    """fonction qui créer une autre fenêtre avec un texte 'Nouvelle fenêtre' 
+    et qui aura la possibilité d'être fermée 
+    si on appuie sur la touche Echap lorsqu'on est dessus"""
+    
     top = tk.Toplevel()                                         # on créer une nouvelle fenêtre
-    label_2 = tk.Label(top, text = 'Nouvelle fenêtre')                   # on y rajoute le texte : "bonjoir"
+    label_2 = tk.Label(top, text = 'Nouvelle fenêtre')          # on y rajoute le texte : "Nouvelle fenêtre"
     label_2.pack()                                              # on affiche le texte ^
     top.bind('<Escape>', destroy)                               # lorsque la touche Echap est préssée, on appelle la fonction destroy() *qui ferme la fenêtre sur laquelle on est*
 
-# fonction qui print la touche préssé lorsque tu es dans l'entrée de texte créée plus loin :
-def keypressed(event):                                      
+def keypressed(event):                           
+    """fonction qui print la touche préssé lorsque tu es dans l'entrée de texte créée plus loin :"""
+    
     print(f'La touche {event} a été préssée')
-
 
 
 # on créer la fenêtre principale  :
