@@ -9,7 +9,7 @@ PhotoShape est un éditeur basique d'images en python
 - [ ] Dessiner
 - [ ] Redimensionner
 
-Ajouter des Filtres 
+Ajouter des Filtres :
 
 - [ ] Effet de Flou
 - [ ] Effet noir & blanc
