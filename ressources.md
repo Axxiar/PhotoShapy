@@ -1,0 +1,8 @@
+- http://tkinter.fdex.eu/index.html
+- https://python-pillow.org/
+- a
+- a
+- a
+- a
+- a
+- a
