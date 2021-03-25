@@ -1,7 +1,24 @@
 # PhotoShape 
 PhotoShape est un éditeur basique d'images en python
 
-#### Rappel commandes git :
+
+## Actions :
+- [ ] Charger des images
+- [ ] Sauvegarder sous différents formats
+- [ ] Ajuster les couleurs RGB
+- [ ] Dessiner
+- [ ] Redimensionner
+
+Ajouter des Filtres 
+
+- [ ] Effet de Flou
+- [ ] Effet noir & blanc
+- [ ] Effet ASCII
+- [ ] Effet Pastel (comme si l'image avait été peinte)
+
+
+
+## Rappel commandes git :
 
 - git clone [lien du dépo] = créer un dossier qui contient tout ce qui est sur le dépot en ligne
 - git pull = récupérer toutes les modifs faites sur le depot par les autres
@@ -14,7 +31,7 @@ Pour apporter une modif sur github (les [] sont à enlever):
 4) `git push`
 
 
-#### Quelques infos importantes :
+## Quelques infos importantes :
 
 - *Le fichier '`.gitignore`' est tout bête : lorsque j'envoie un push vers la page github, celui-ci ignore tous les fichiers dont le nom est écrit dans '`.gitignore`'*
 *j'y ai mit `.vscode` parceque c'est un fichier créé auto par Visual Studio Code qui lui permet de savoir quelle version de python j'utilise dans mon projet*
