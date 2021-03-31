@@ -55,5 +55,5 @@ Pour apporter une modif sur github (les [] sont à enlever):
 *tu met un f avant les guillemets et tout ce qui va être entre acolades dans les guillemets (ici `prénom`) sera considéré comme une variable*
 *en gros ca affiche la variable en question directement en string peut importe son type*
 
-### ici : `print(f"Bonjour {prénom}")` revient à `print("Bonjour "+ str(prénom))`
+> ici : `print(f"Bonjour {prénom}")` revient à `print("Bonjour "+ str(prénom))`
 
