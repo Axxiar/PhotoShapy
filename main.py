@@ -94,18 +94,21 @@ fen.geometry("1090x720")
 fen.bind('<Escape>', destroy)
 
 
+leftframe = tk.Frame(padx=5,pady=5)
+
 # création des éléments de notre éditeur d'images
-bouton_rotate = tk.Button(fen, text = "Tourner la photo", command = rotate)           
+bouton_rotate = tk.Button(leftframe, text = "Tourner la photo", command = rotate)           
 
-bouton_display = tk.Button(fen, text = "Ouvrir une photo", command = display)     
+bouton_display = tk.Button(leftframe, text = "Ouvrir une photo", command = display)     
 
-lbl = tk.Label(fen,borderwidth=1,bg='#022c43')
+lbl = tk.Label(leftframe,bg='#022c43')
 
 # on affiche les éléments créés
-bouton_rotate.pack(pady=5)
-bouton_display.pack(pady=5)
-lbl.pack()
+bouton_rotate.grid(row=0,column=0)
+bouton_display.grid(row=0,column=1)
+lbl.grid(row=1)
 
+leftframe.pack(expand=tk.YES)
 
 # on "lance" notre fenêtre
 fen.mainloop()
