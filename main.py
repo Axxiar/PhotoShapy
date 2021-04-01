@@ -89,26 +89,44 @@ fen = tk.Tk()
 
 fen.title("PhotoShape")            
 fen.config(bg='#022c43')
-fen.geometry("1090x720")                                    
+fen.geometry("1850x900")                                    
 
 fen.bind('<Escape>', destroy)
 
+frame1 = tk.Frame(fen,bg='#022c43')
+frame2 = tk.Frame(frame1,bg='#053f5e')
+frame3 = tk.Frame(frame1,bg='#053f5e')
+frame4 = tk.Frame(frame2,bg='#053f5e')
+frame5 = tk.Frame(frame2,bg='#053f5e')
+separation1 = tk.Frame(frame1,bg='#ffd700')
+separation2 = tk.Frame(frame2,bg='#ffd700')
 
-leftframe = tk.Frame(padx=5,pady=5)
 
-# création des éléments de notre éditeur d'images
-bouton_rotate = tk.Button(leftframe, text = "Tourner la photo", command = rotate)           
+#création des éléments de notre éditeur d'images
+     
+bouton_charger = tk.Button(frame5, text = "Importer une photo",font=('Consolas'),bg="#115173",fg="#ffd700", command = display)
+bouton_modifier = tk.Button(frame5, text = "Modifier la photo",font=('Consolas'),bg="#115173",fg="#ffd700")
+bouton_supprimer = tk.Button(frame5, text = "Effacer la photo",font=('Consolas'),bg="#115173",fg="#ffd700")
+lbl = tk.Label(frame3,width=130,height=43,bg='grey',text="Pas d'image",font=('Consolas'),fg='white')
+defaultlbl = tk.Label(frame4, width=60,height=20,bg='grey',text="Pas d'image",font=('Consolas',10),fg='white')
 
-bouton_display = tk.Button(leftframe, text = "Ouvrir une photo", command = display)     
-
-lbl = tk.Label(leftframe,bg='#022c43')
 
 # on affiche les éléments créés
-bouton_rotate.grid(row=0,column=0)
-bouton_display.grid(row=0,column=1)
-lbl.grid(row=1)
+bouton_charger.pack(padx=155,ipady=10,ipadx=10,pady=30)
+bouton_modifier.pack(ipady=10,ipadx=16,pady=30)
+bouton_supprimer.pack(ipady=10,ipadx=20,pady=25)
+lbl.pack(pady=10,padx=10,expand=tk.YES)
+defaultlbl.pack(pady=10,padx=10,side=tk.TOP)
 
-leftframe.pack(expand=tk.YES)
+frame1.pack(fill=tk.BOTH,expand=tk.YES)
+frame2.pack(padx=20,ipadx=20,ipady=20,side=tk.LEFT)
+frame3.pack(padx=20,ipady=10,ipadx=10,side=tk.RIGHT)
+frame4.pack(pady=20,padx=10)
+separation2.pack(ipadx=160,pady=20)
+frame5.pack(ipady=15,pady=20,expand=tk.YES)
+
+separation1.pack(ipady=380,expand=tk.YES)
+
 
 # on "lance" notre fenêtre
 fen.mainloop()
