@@ -32,6 +32,7 @@ from PIL import Image,ImageTk
 import os
 import time
 
+
 # création de nos fonctions
 
 def display():
@@ -65,6 +66,8 @@ def display():
 #         print('Aucune image')
 
 
+
+
 def destroy(event):
     """fonction qui détruit la fenêtre sur laquelle tu es:"""
     alerte = messagebox.askokcancel(title="Attention", message="Es-tu sûr de vouloir quitter ?\n\n*Le travail non sauvegarder sera irrecupérable*")
@@ -74,7 +77,10 @@ def destroy(event):
         event.widget.destroy()
     else:
         pass
-    
+
+def prise_en_main():
+    pem = tk.Toplevel(fen)
+    pem.title('Prise en main')
 
 #-----------  à garder pour plus tard  --------------
 
@@ -93,7 +99,7 @@ def destroy(event):
 
 
 # création et paramètrage de notre fenêtre principale
-fen = tk.Tk()                  
+fen = tk.Tk()
 
 fen.title("PhotoShape")            
 fen.config(bg='#022c43')
@@ -136,6 +142,38 @@ separation2.pack(ipadx=160,pady=20)
 frame5.pack(ipady=15,pady=20,expand=tk.YES)
 
 separation1.pack(ipady=380,expand=tk.YES)
+
+import tkinter as tk
+
+# créer un menu
+menu = tk.Menu(fen)
+
+#sous-menu "Fichiers"
+file_menu = tk.Menu(menu, tearoff = 0)
+file_menu.add_command(label="Importer",accelerator='Ctrl+I',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=display)
+file_menu.add_command(label="Enregistrer",accelerator='Ctrl+S',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+file_menu.add_command(label="Enregistrer sous",accelerator='Ctrl+Alt+S',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+file_menu.add_separator(background='#053f5e')
+file_menu.add_command(label="Quitter",command=fen.destroy,accelerator='Echap',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+menu.add_cascade(label="Fichiers", menu=file_menu)
+
+#sous-menu "Outils"
+outils_menu = tk.Menu(menu, tearoff = 0)
+outils_menu.add_command(label="Importer",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+outils_menu.add_command(label="Enregistrer",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+outils_menu.add_command(label="Enregistrer sous",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+outils_menu.add_command(label="Quitter",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+menu.add_cascade(label="Outils", menu=outils_menu)
+
+#sous-menu "Aide"
+aide_menu = tk.Menu(menu, tearoff = 0)
+aide_menu.add_command(label="Prise en main",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=prise_en_main)
+aide_menu.add_command(label="Documentation",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+aide_menu.add_command(label="Code Source",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+aide_menu.add_command(label="Crédits",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+menu.add_cascade(label="Aide", menu=aide_menu)
+
+fen.config(menu=menu)
 
 
 # on "lance" notre fenêtre
