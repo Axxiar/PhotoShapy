@@ -1,18 +1,20 @@
 # ----------------------------------------------------------------------------------------------------------------------------------------
-#                                                ______  _                     ______ _                       
-#                                               (_____ \| |           _       / _____) |                      
-#                                                _____) ) |__   ___ _| |_ ___( (____ | |__  _____ ____  _____
-#                                               |  ____/|  _ \ / _ (_   _) _ \\____ \|  _ \(____ |  _ \| ___ |
-#                                               | |     | | | | |_| || || |_| |____) ) | | / ___ | |_| | ____|
-#                                               | |     |_| |_|\___/  \__)___(______/|_| |_\_____|  __/|_____)
-#                                               |_|                                              |_|
+#
+#                                                     _____  _           _        _____ _                       
+#                                                    |  __ \| |         | |      / ____| |                      
+#                                                    | |__) | |__   ___ | |_ ___| (___ | |__   __ _ _ __  _   _ 
+#                                                    |  ___/| '_ \ / _ \| __/ _ \\___ \| '_ \ / _` | '_ \| | | |
+#                                                    | |    | | | | (_) | || (_) |___) | | | | (_| | |_) | |_| |
+#                                                    |_|    |_| |_|\___/ \__\___/_____/|_| |_|\__,_| .__/ \__, |
+#                                                                                                  | |     __/ |
+#                                                                                                  |_|    |___/ 
 # 
 #
 #   Projet NSI 1ère
 #   Lycée Sophie Germain
 #   Milo GARDIES & Alexis GALOPIN, classe de 1G6
 #   
-#   PhotoShape est un éditeur d'images écrit entièrement en Python
+#   PhotoShapy est un éditeur d'images écrit entièrement en Python
 #   Modules utilisées : 
 #         - PIL (édition d'images)
 #         - Tkinter (interface graphique)
@@ -25,7 +27,7 @@
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
-# importations modules
+# importation des modules
 import tkinter as tk                                       
 from tkinter import filedialog, messagebox
 from PIL import Image,ImageTk
@@ -33,9 +35,12 @@ import os
 import time
 import webbrowser as web
 
-# création de nos fonctions
 
-def display():
+# création des fonctions
+def open_img():
+    """open_img est une fonction qui permet d'ouvrir et de sélectionner depuis l'explorateur de fichiers une image 
+    puis de la charger dans la fenêtre"""
+    
     global im
     filename = filedialog.askopenfilename(title="Ouvrir un fichier",initialdir= os.getcwd(),filetype=((".png","*.png"), (".jpg","*.jpg"), (".jfif","*.jfif"), ("Tous les fichiers","*")))
     try:       
@@ -67,10 +72,16 @@ def display():
 
 
 def code_source():
+    """attribution : option "Code Source" du sous menu "Aide" (ligne 180)
+    description : ouvre à l'aide du module webbrowser le lien vers ce dépot github"""
+    
     web.open_new_tab('https://github.com/AXXIAR/PhotoShapy')
 
 def destroy(event):
-    """fonction qui détruit la fenêtre sur laquelle tu es:"""
+    """attribution : option "Quitter" du sous menu "Fichiers" (l. 167)
+    description : affiche un message de confirmation pour quitter (OK/CANCEL). 
+        Ferme le widget sur lequel l'utilisateur est si OK (une fenêtre étant considérée comme un widget cela la fermera),
+        Annule si CANCEL"""
     alerte = messagebox.askokcancel(title="Attention", message="Es-tu sûr de vouloir quitter ?\n\n*Le travail non sauvegarder sera irrecupérable*")
     if alerte == True:
         messagebox.showinfo(title='Au revoir',message="Merci de nous avoir utilisé :)")
@@ -80,6 +91,8 @@ def destroy(event):
         pass
 
 def prise_en_main():
+    """attribution : option "Prise En Main" du sous menu "Outils" (l. 185)
+    description : --à venir--"""
     pem = tk.Toplevel(fen)
     pem.title('Prise en main')
     
@@ -101,25 +114,27 @@ def prise_en_main():
 
 
 # création et paramètrage de notre fenêtre principale
-fen = tk.Tk()
+fen = tk.Tk()                                           # stockage de la fenêtre principale dans la variable fen
 
-fen.title("PhotoShapy")            
-fen.config(bg='#022c43')
-fen.geometry("1850x900")                                    
+fen.title("PhotoShapy")                                 # changement du titre de la fenêtre
+fen.config(bg='#022c43')                                # changement de l'arrière plan 
+fen.geometry("1850x900")                                # définition de sa taille par défaut à l'ouverture
 
-fen.bind('<Escape>', destroy)
+fen.bind('<Escape>', destroy)                           # lorsque, sur la fenêtre, la touche Echap est préssée, on appelle la fonction destroy (l.80)
 
-frame1 = tk.Frame(fen,bg='#022c43')
+# création des différentes boîtes qui structure l'intérieur de la fenêtre
+#   argument 1 : la fenêtre ou boîte dans laquelle on place notre nouvelle boîte
+#   argument 2 : définition de la couleure d'arrière-plan de la boîte
+frame1 = tk.Frame(fen,bg='#022c43')                     
 frame2 = tk.Frame(frame1,bg='#053f5e')
 frame3 = tk.Frame(frame1,bg='#053f5e')
 frame4 = tk.Frame(frame2,bg='#053f5e')
 frame5 = tk.Frame(frame2,bg='#053f5e')
-separation1 = tk.Frame(frame1,bg='#ffd700')
+separation1 = tk.Frame(frame1,bg='#ffd700')             # cette boîte et la suivante servent de séparations visuelles (les deux traits jaunes sur la fenêtre)
 separation2 = tk.Frame(frame2,bg='#ffd700')
 
 
 #création des éléments de notre éditeur d'images
-     
 bouton_charger = tk.Button(frame5, text = "Importer une photo",font=('Consolas'),bg="#115173",fg="#ffd700", command = display)
 bouton_modifier = tk.Button(frame5, text = "Modifier la photo",font=('Consolas'),bg="#115173",fg="#ffd700")
 bouton_supprimer = tk.Button(frame5, text = "Effacer la photo",font=('Consolas'),bg="#115173",fg="#ffd700")
@@ -144,12 +159,10 @@ frame5.pack(ipady=15,pady=20,expand=tk.YES)
 
 separation1.pack(ipady=380,expand=tk.YES)
 
-import tkinter as tk
-
-# créer un menu
+# créer un menu 
 menu = tk.Menu(fen)
 
-#sous-menu "Fichiers"
+# sous-menu "Fichiers"
 file_menu = tk.Menu(menu, tearoff = 0)
 file_menu.add_command(label="Importer",accelerator='Ctrl+I',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=display)
 file_menu.add_command(label="Enregistrer",accelerator='Ctrl+S',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
