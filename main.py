@@ -18,7 +18,7 @@
 #         - Tkinter (interface graphique)
 #         - Os (interactions avec le système d'exploitation)
 #         - Time ()
-#           
+#         - Webbrowser (recherches sur le web)
 #
 #
 #                                                           🔄 En cours de développement 🔄
@@ -31,7 +31,7 @@ from tkinter import filedialog, messagebox
 from PIL import Image,ImageTk
 import os
 import time
-
+import webbrowser as web
 
 # création de nos fonctions
 
@@ -66,7 +66,8 @@ def display():
 #         print('Aucune image')
 
 
-
+def code_source():
+    web.open_new_tab('https://github.com/AXXIAR/PhotoShapy')
 
 def destroy(event):
     """fonction qui détruit la fenêtre sur laquelle tu es:"""
@@ -81,6 +82,7 @@ def destroy(event):
 def prise_en_main():
     pem = tk.Toplevel(fen)
     pem.title('Prise en main')
+    
 
 #-----------  à garder pour plus tard  --------------
 
@@ -101,7 +103,7 @@ def prise_en_main():
 # création et paramètrage de notre fenêtre principale
 fen = tk.Tk()
 
-fen.title("PhotoShape")            
+fen.title("PhotoShapy")            
 fen.config(bg='#022c43')
 fen.geometry("1850x900")                                    
 
@@ -124,7 +126,6 @@ bouton_supprimer = tk.Button(frame5, text = "Effacer la photo",font=('Consolas')
 lbl = tk.Label(frame3,width=130,height=43,bg='grey',text="Pas d'image",font=('Consolas'),fg='white')
 default_noimg = tk.Label(frame4, width=60,height=20,bg='grey',text="Pas d'image",font=('Consolas',10),fg='white')
 default_lbl = tk.Label(frame4,bg='#053f5e')
-
 
 # on affiche les éléments créés
 bouton_charger.pack(padx=155,ipady=10,ipadx=10,pady=30)
@@ -159,17 +160,18 @@ menu.add_cascade(label="Fichiers", menu=file_menu)
 
 #sous-menu "Outils"
 outils_menu = tk.Menu(menu, tearoff = 0)
-outils_menu.add_command(label="Importer",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
-outils_menu.add_command(label="Enregistrer",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
-outils_menu.add_command(label="Enregistrer sous",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
-outils_menu.add_command(label="Quitter",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+outils_menu.add_command(label="Ajuster (RGB)",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+outils_menu.add_command(label="Rogner",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+outils_menu.add_command(label="Filtres",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+outils_menu.add_command(label="Dessiner",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+outils_menu.add_command(label="Pivoter",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
 menu.add_cascade(label="Outils", menu=outils_menu)
 
 #sous-menu "Aide"
 aide_menu = tk.Menu(menu, tearoff = 0)
 aide_menu.add_command(label="Prise en main",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=prise_en_main)
 aide_menu.add_command(label="Documentation",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
-aide_menu.add_command(label="Code Source",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+aide_menu.add_command(label="Code Source",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=code_source)
 aide_menu.add_command(label="Crédits",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
 menu.add_cascade(label="Aide", menu=aide_menu)
 
