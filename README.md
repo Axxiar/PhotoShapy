@@ -1,4 +1,4 @@
-# PhotoShape 
+# PhotoShapy
 PhotoShape est un éditeur basique d'images en python
 
 
