@@ -40,24 +40,36 @@ import webbrowser as web
 def open_img():
     """open_img est une fonction qui permet d'ouvrir et de sélectionner depuis l'explorateur de fichiers une image 
     puis de la charger dans la fenêtre"""
+    global im                                   # permet à la variable im d'être aussi utilisée en dehors de cette fonction 
     
-    global im
+    # askopenfilename est une fonction de filedialog (module tkinter) qui permet de choisir un fichier depuis l'exporateur de fichier puis de récup son chemin d'accès 
+    # 
+    # ici on stocke le chemin d'accès dans la variable filename
+    #   
+    #   title sera le nom de la fenêtre de l'explorateur de fichier
+    #   initialdir = os.getcwd() permet d'indiquer que l'explorateur de fichier doit s'ouvrir au chemin d'accès où se trouve l'utilisateur
+    #   filetypes définit les extensions que l'utilisateur peut choisir
+    
     filename = filedialog.askopenfilename(title="Ouvrir un fichier",initialdir= os.getcwd(),filetype=((".png","*.png"), (".jpg","*.jpg"), (".jfif","*.jfif"), ("Tous les fichiers","*")))
-    try:       
-        im = Image.open(filename)
-        if im.height >= 20:                    
-            print('too big')
-            im = im.resize((im.width,150))
-        if im.width >= 60:             
-            print('too large')
-            im = im.resize((200,im.height))
-        photoim = ImageTk.PhotoImage(im)
-        default_noimg.destroy()
+    try:                                                        # try fait comprendre à python qu'on essaye quelquechose
+        im = Image.open(filename)           # ici on charge la photo sélectionnée et on la stocke dans im 
+                                            #(le fichier choisit peut ne pas être dans un format accepté par Pillow) d'où le try:
+        
+        if im.height >= 20:                     # pas besoins de commenter ca sera modifié
+            print('too big')                    # |
+            im = im.resize((im.width,150))      # |
+        if im.width >= 60:                      # |
+            print('too large')                  # |
+            im = im.resize((200,im.height))     # |
+        photoim = ImageTk.PhotoImage(im)             # on charge l'image en élément ImageTk qu'on stocke dans im 
+        default_noimg.destroy()                      # voir l.171
 
-        default_lbl.configure(image=photoim,bg='grey')
-        default_lbl.image = photoim
-    except:
-        print('erreur')
+        default_lbl.configure(image=photoim,bg='grey')  # on rajoute l'image au label default_lbl 
+        default_lbl.image = photoim                     #   (celui qui n'aura pas de modifications pour afficher à l'utilisateur son image de départ) 
+        
+    except:                                   # mot-clé de python, relié à try : si le code dans try rencontre une erreur alors 
+                                              #     (sans doute à cause d'un mauvais format dans notre cas)
+        print('erreur')                       #  on print 'erreur'
 
 # def rotate():
 #     """fonction qui vérifie qu'une image est affichée et si oui qui la tourne de 45° à gauche puis la réaffiche"""
@@ -82,13 +94,17 @@ def destroy(event):
     description : affiche un message de confirmation pour quitter (OK/CANCEL). 
         Ferme le widget sur lequel l'utilisateur est si OK (une fenêtre étant considérée comme un widget cela la fermera),
         Annule si CANCEL"""
+    
+    # on stocke dans alerte une messagebox de type okcancel (présente un bouton OK et un bouton Cancel)
+    #   title sera le titre de la fenêtre messagebox 
+    #   message sera le texte qu'elle affiche
     alerte = messagebox.askokcancel(title="Attention", message="Es-tu sûr de vouloir quitter ?\n\n*Le travail non sauvegarder sera irrecupérable*")
-    if alerte == True:
-        messagebox.showinfo(title='Au revoir',message="Merci de nous avoir utilisé :)")
-        time.sleep(1)
-        event.widget.destroy()
-    else:
-        pass
+    if alerte == True:              # alerte = True si l'utilisateur clique sur OK
+        messagebox.showinfo(title='Au revoir',message="Merci de nous avoir utilisé :)") # on affiche une autre boîte avec du texte seulement pour dire au revoir
+        time.sleep(1)                           # on met le programme en pause pendant 1 seconde
+        event.widget.destroy()                  # on détruit le widget où à été appelée la fonction
+    else:                           # alerte = False si l'utilisateur clique sur CANCEL
+        pass                                    # on ne fait rien (la boîte est fermée par défaut) ... retour à l'application
 
 def prise_en_main():
     """attribution : option "Prise En Main" du sous menu "Outils" (l. 185)
