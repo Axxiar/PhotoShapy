@@ -3,6 +3,6 @@
 - https://coderslegacy.com/python/libraries-in-python/python-tkinter-filedialog/
 - https://docs.python.org/3/library/webbrowser.html
 - https://www.youtube.com/channel/UCFB0dxMudkws1q8w5NJEAmw
-- a
+- https://www.tutorialspoint.com/python/python_gui_programming.htm
 - a
 - a
