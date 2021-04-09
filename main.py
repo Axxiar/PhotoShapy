@@ -1,13 +1,12 @@
 # ----------------------------------------------------------------------------------------------------------------------------------------
 #
-#                                                     _____  _           _        _____ _                       
-#                                                    |  __ \| |         | |      / ____| |                      
-#                                                    | |__) | |__   ___ | |_ ___| (___ | |__   __ _ _ __  _   _ 
-#                                                    |  ___/| '_ \ / _ \| __/ _ \\___ \| '_ \ / _` | '_ \| | | |
-#                                                    | |    | | | | (_) | || (_) |___) | | | | (_| | |_) | |_| |
-#                                                    |_|    |_| |_|\___/ \__\___/_____/|_| |_|\__,_| .__/ \__, |
-#                                                                                                  | |     __/ |
-#                                                                                                  |_|    |___/ 
+#                                                ______  _                     ______ _                       
+#                                               (_____ \| |           _       / _____) |                      
+#                                                _____) ) |__   ___ _| |_ ___( (____ | |__  _____ ____  _   _ 
+#                                               |  ____/|  _ \ / _ (_   _) _ \\____ \|  _ \(____ |  _ \| | | |
+#                                               | |     | | | | |_| || || |_| |____) ) | | / ___ | |_| | |_| |
+#                                               |_|     |_| |_|\___/  \__)___(______/|_| |_\_____|  __/ \__  |
+#                                                                                                |_|   (____/
 # 
 #
 #   Projet NSI 1ère
@@ -27,20 +26,23 @@
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
-# importation des modules
+
+###########  importation des modules  ###########
 import tkinter as tk                                       
 from tkinter import filedialog, messagebox
 from PIL import Image,ImageTk
 import os
 import time
 import webbrowser as web
+# ----------------------------------------------------------------------------------------------------------------------------------------
 
 
-# création des fonctions
+######################################################    CREATION DES FONCTIONS    #####################################################
 def open_img():
-    """open_img est une fonction qui permet d'ouvrir et de sélectionner depuis l'explorateur de fichiers une image 
+    """attribution : bouton "Importer" (l.afpt)
+    description : permet d'ouvrir et de sélectionner depuis l'explorateur de fichiers une image 
     puis de la charger dans la fenêtre"""
-    global im                                   # permet à la variable im d'être aussi utilisée en dehors de cette fonction 
+    global im                          # permet à la variable im d'être aussi utilisée en dehors de cette fonction 
     
     # askopenfilename est une fonction de filedialog (module tkinter) qui permet de choisir un fichier depuis l'exporateur de fichier puis de récup son chemin d'accès 
     # 
@@ -51,7 +53,7 @@ def open_img():
     #   filetypes définit les extensions que l'utilisateur peut choisir
     
     filename = filedialog.askopenfilename(title="Ouvrir un fichier",initialdir= os.getcwd(),filetype=((".png","*.png"), (".jpg","*.jpg"), (".jfif","*.jfif"), ("Tous les fichiers","*")))
-    try:                                                        # try fait comprendre à python qu'on essaye quelquechose
+    try:                                                        # try fait comprendre à python qu'on essaye quelque chose
         im = Image.open(filename)           # ici on charge la photo sélectionnée et on la stocke dans im 
                                             #(le fichier choisit peut ne pas être dans un format accepté par Pillow) d'où le try:
         
@@ -62,7 +64,7 @@ def open_img():
             print('too large')                  # |
             im = im.resize((200,im.height))     # |
         photoim = ImageTk.PhotoImage(im)             # on charge l'image en élément ImageTk qu'on stocke dans im 
-        default_noimg.destroy()                      # voir l.171
+        default_noimg.destroy()                      # voir l.afpt
 
         default_lbl.configure(image=photoim,bg='grey')  # on rajoute l'image au label default_lbl 
         default_lbl.image = photoim                     #   (celui qui n'aura pas de modifications pour afficher à l'utilisateur son image de départ) 
@@ -90,7 +92,7 @@ def code_source():
     web.open_new_tab('https://github.com/AXXIAR/PhotoShapy')
 
 def destroy(event):
-    """attribution : option "Quitter" du sous menu "Fichiers" (l. 167)
+    """attribution : option "Quitter" du sous menu "Fichiers" (l.afpt)
     description : affiche un message de confirmation pour quitter (OK/CANCEL). 
         Ferme le widget sur lequel l'utilisateur est si OK (une fenêtre étant considérée comme un widget cela la fermera),
         Annule si CANCEL"""
@@ -107,61 +109,59 @@ def destroy(event):
         pass                                    # on ne fait rien (la boîte est fermée par défaut) ... retour à l'application
 
 def prise_en_main():
-    """attribution : option "Prise En Main" du sous menu "Outils" (l. 185)
+    """attribution : option "Prise En Main" du sous menu "Outils" (l.afpt)
     description : --à venir--"""
-    pem = tk.Toplevel(fen)
+    pem = tk.Toplevel(master)
     pem.title('Prise en main')
-    
-
-#-----------  à garder pour plus tard  --------------
-
-# def openwindow():          
-#     """fonction qui créer une autre fenêtre avec un texte 'Nouvelle fenêtre' 
-#     et qui aura la possibilité d'être fermée 
-#     si on appuie sur la touche Echap lorsqu'on est dessus"""
-    
-#     top = tk.Toplevel()                                         # on créer une nouvelle fenêtre
-#     label_2 = tk.Label(top, text = 'Nouvelle fenêtre')          # on y rajoute le texte : "Nouvelle fenêtre"
-#     label_2.pack()                                              # on affiche le texte ^
-#     top.bind('<Escape>', destroy)                               # lorsque la touche Echap est préssée, on appelle la fonction destroy() *qui ferme la fenêtre sur laquelle on est*
-
-#-----------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------------------------
 
 
+####################################      CREATION ET PARAMETRAGE DE LA FENETRE PRINCIPALE       #########################################
 
-# création et paramètrage de notre fenêtre principale
-fen = tk.Tk()                                           # stockage de la fenêtre principale dans la variable fen
+master = tk.Tk()                                           # stockage de la fenêtre principale dans la variable master
 
-fen.title("PhotoShapy")                                 # changement du titre de la fenêtre
-fen.config(bg='#022c43')                                # changement de l'arrière plan 
-fen.geometry("1850x900")                                # définition de sa taille par défaut à l'ouverture
+master.title("PhotoShapy")                                 # changement du titre de la fenêtre
+master.config(bg='#022c43')                                # changement de l'arrière plan 
+master.geometry("1850x900")                                # définition de sa taille par défaut à l'ouverture
 
-fen.bind('<Escape>', destroy)                           # lorsque, sur la fenêtre, la touche Echap est préssée, on appelle la fonction destroy (l.80)
+master.bind('<Escape>', destroy)                           # lorsque, sur la fenêtre, la touche Echap est préssée, on appelle la fonction destroy (l.afpt)
+# ----------------------------------------------------------------------------------------------------------------------------------------
 
-# création des différentes boîtes qui structure l'intérieur de la fenêtre
+
+######################################      CREATION DES BOITES QUI STRUCTURE LA FENETRE     #############################################
+
 #   argument 1 : la fenêtre ou boîte dans laquelle on place notre nouvelle boîte
 #   argument 2 : définition de la couleure d'arrière-plan de la boîte
-frame1 = tk.Frame(fen,bg='#022c43')                     
+frame1 = tk.Frame(master,bg='#022c43')                     
 frame2 = tk.Frame(frame1,bg='#053f5e')
 frame3 = tk.Frame(frame1,bg='#053f5e')
 frame4 = tk.Frame(frame2,bg='#053f5e')
 frame5 = tk.Frame(frame2,bg='#053f5e')
 separation1 = tk.Frame(frame1,bg='#ffd700')             # cette boîte et la suivante servent de séparations visuelles (les deux traits jaunes sur la fenêtre)
 separation2 = tk.Frame(frame2,bg='#ffd700')
+# ----------------------------------------------------------------------------------------------------------------------------------------
 
 
-#création des éléments de notre éditeur d'images
-bouton_charger = tk.Button(frame5, text = "Importer une photo",font=('Consolas'),bg="#115173",fg="#ffd700", command = display)
-bouton_modifier = tk.Button(frame5, text = "Modifier la photo",font=('Consolas'),bg="#115173",fg="#ffd700")
-bouton_supprimer = tk.Button(frame5, text = "Effacer la photo",font=('Consolas'),bg="#115173",fg="#ffd700")
-lbl = tk.Label(frame3,width=130,height=43,bg='grey',text="Pas d'image",font=('Consolas'),fg='white')
-default_noimg = tk.Label(frame4, width=60,height=20,bg='grey',text="Pas d'image",font=('Consolas',10),fg='white')
-default_lbl = tk.Label(frame4,bg='#053f5e')
+################################################    CREATION DES BOUTONS ET LABELS   #####################################################
 
-# on affiche les éléments créés
-bouton_charger.pack(padx=155,ipady=10,ipadx=10,pady=30)
-bouton_modifier.pack(ipady=10,ipadx=16,pady=30)
-bouton_supprimer.pack(ipady=10,ipadx=20,pady=25)
+import_button = tk.Button(frame5, text = "Importer une photo",font=('Consolas'),bg="#115173",fg="#ffd700", command = open_img)
+modify_button = tk.Button(frame5, text = "Modifier la photo",font=('Consolas'),bg="#115173",fg="#ffd700")
+delete_button = tk.Button(frame5, text = "Effacer la photo",font=('Consolas'),bg="#115173",fg="#ffd700")
+lbl = tk.Label(frame3,width=130,height=43,bg='grey',text="Pas d'image",font=('Consolas'),fg='white')                    # lbl est un label qui contiendra l'image sur laquelle on verra les modifications
+default_noimg = tk.Label(frame4, width=60,height=20,bg='grey',text="Pas d'image",font=('Consolas',10),fg='white')       # default_noimg est le label par défaut quand il n'y a pas d'image
+default_lbl = tk.Label(frame4,bg='#053f5e')         # default_lbl est le label qui contiendra l'image par défaut sans ses changements
+# ----------------------------------------------------------------------------------------------------------------------------------------
+
+
+###################################################    AFFICHAGE DES ELEMENTS CREE    ####################################################
+
+#   padx, pady met du padding extérieur sur l'axe x ou y
+#   ipadx, ipady met du padding intérieur sur l'axe x ou y
+#   expand étire le padding extérieur autant que possible
+#   side définit le côté où sera placé l'élément
+import_button.pack(padx=155,ipady=10,ipadx=10,pady=30)
+modify_button.pack(ipady=10,ipadx=16,pady=30)
+delete_button.pack(ipady=10,ipadx=20,pady=25)
 lbl.pack(pady=10,padx=10,expand=tk.YES)
 default_lbl.pack(side=tk.TOP)
 default_noimg.pack(pady=10,padx=10,side=tk.TOP)
@@ -174,18 +174,27 @@ separation2.pack(ipadx=160,pady=20)
 frame5.pack(ipady=15,pady=20,expand=tk.YES)
 
 separation1.pack(ipady=380,expand=tk.YES)
+# ----------------------------------------------------------------------------------------------------------------------------------------
 
-# créer un menu 
-menu = tk.Menu(fen)
 
-# sous-menu "Fichiers"
+######################################################      CREATION DU MENU      ########################################################
+
+menu = tk.Menu(master)
+
+# sous-menu
+#   argument 1 insique dans quele fenêtre est placé le menu
+#   argument 2 rend le menu indétachable
 file_menu = tk.Menu(menu, tearoff = 0)
-file_menu.add_command(label="Importer",accelerator='Ctrl+I',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=display)
+
+# sous-menu en format cascade "Fichiers" dans le menu file
+menu.add_cascade(label="Fichiers", menu=file_menu)
+
+file_menu.add_command(label="Importer",accelerator='Ctrl+I',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=open_img)
 file_menu.add_command(label="Enregistrer",accelerator='Ctrl+S',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
 file_menu.add_command(label="Enregistrer sous",accelerator='Ctrl+Alt+S',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
 file_menu.add_separator(background='#053f5e')
-file_menu.add_command(label="Quitter",command=fen.destroy,accelerator='Echap',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
-menu.add_cascade(label="Fichiers", menu=file_menu)
+file_menu.add_command(label="Quitter",command=master.destroy,accelerator='Echap',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+
 
 #sous-menu "Outils"
 outils_menu = tk.Menu(menu, tearoff = 0)
@@ -204,8 +213,10 @@ aide_menu.add_command(label="Code Source",background='#053f5e',foreground='#ffd7
 aide_menu.add_command(label="Crédits",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
 menu.add_cascade(label="Aide", menu=aide_menu)
 
-fen.config(menu=menu)
+master.config(menu=menu)
+# ----------------------------------------------------------------------------------------------------------------------------------------
 
 
-# on "lance" notre fenêtre
-fen.mainloop()
+######################################################    LANCEMENT DE LA FENETRE    #####################################################
+
+master.mainloop()
