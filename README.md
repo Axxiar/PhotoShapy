@@ -10,6 +10,7 @@ PhotoShape est un éditeur basique d'images en python
 - [ ] Redimensionner
 - [ ] Mode Clair/Sombre
 - [ ] Raccourcis Clavier
+- [ ] Undo(/Redo?)
 
 Ajouter des Filtres :
 
