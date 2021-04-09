@@ -2,7 +2,7 @@
 - https://python-pillow.org/
 - https://coderslegacy.com/python/libraries-in-python/python-tkinter-filedialog/
 - https://docs.python.org/3/library/webbrowser.html
-- a
+- https://www.youtube.com/channel/UCFB0dxMudkws1q8w5NJEAmw
 - a
 - a
 - a
