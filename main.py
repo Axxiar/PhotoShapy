@@ -100,7 +100,7 @@ def destroy(event):
     # on stocke dans alerte une messagebox de type okcancel (présente un bouton OK et un bouton Cancel)
     #   title sera le titre de la fenêtre messagebox 
     #   message sera le texte qu'elle affiche
-    alerte = messagebox.askokcancel(title="Attention", message="Es-tu sûr de vouloir quitter ?\n\n*Le travail non sauvegarder sera irrecupérable*")
+    alerte = messagebox.askokcancel(title="Attention", message="Es-tu sûr de vouloir quitter ?\n\n*Le travail non sauvegardé sera irrecupérable*")
     if alerte == True:              # alerte = True si l'utilisateur clique sur OK
         messagebox.showinfo(title='Au revoir',message="Merci de nous avoir utilisé :)") # on affiche une autre boîte avec du texte seulement pour dire au revoir
         time.sleep(1)                           # on met le programme en pause pendant 1 seconde
@@ -111,8 +111,35 @@ def destroy(event):
 def prise_en_main():
     """attribution : option "Prise En Main" du sous menu "Outils" (l.afpt)
     description : --à venir--"""
-    pem = tk.Toplevel(master)
-    pem.title('Prise en main')
+    alerte = messagebox.askyesno(title="Ouverture", message="Ouvrir en ligne ?")
+    if alerte == True:              # alerte = True si l'utilisateur clique sur Yes
+        web.open_new_tab('https://axxiar.github.io/PhotoShapy/')
+    else:                           # alerte = False si l'utilisateur clique sur No
+        pem = tk.Tk()
+        pem.title('Prise en main')
+        pem.geometry(f'{master.winfo_width()-30}x{master.winfo_height()-30}')
+        pem.geometry("+40+60")
+        pem.config(bg='#022c43')
+        master.destroy()
+        pem.mainloop()
+
+    
+    
+
+def docs():
+    #- renvoyer sur le site (docu à créer)
+    """bloub"""
+    alerte = messagebox.askyesno(title="Ouverture", message="Ouvrir en ligne ?")
+    if alerte == True:              # alerte = True si l'utilisateur clique sur Yes
+        web.open_new_tab('https://axxiar.github.io/PhotoShapy/')
+    else:                           # alerte = False si l'utilisateur clique sur No
+        pem = tk.Tk()
+        pem.title('Prise en main')
+        pem.geometry(f'{master.winfo_width()-30}x{master.winfo_height()-30}')
+        pem.geometry("+40+60")
+        pem.config(bg='#022c43')
+        master.destroy()
+        pem.mainloop()
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -123,6 +150,7 @@ master = tk.Tk()                                           # stockage de la fen�
 master.title("PhotoShapy")                                 # changement du titre de la fenêtre
 master.config(bg='#022c43')                                # changement de l'arrière plan 
 master.geometry("1850x900")                                # définition de sa taille par défaut à l'ouverture
+master.geometry("+25+25")                                # définition de sa taille par défaut à l'ouverture
 
 master.bind('<Escape>', destroy)                           # lorsque, sur la fenêtre, la touche Echap est préssée, on appelle la fonction destroy (l.afpt)
 # ----------------------------------------------------------------------------------------------------------------------------------------
@@ -208,7 +236,7 @@ menu.add_cascade(label="Outils", menu=outils_menu)
 #sous-menu "Aide"
 aide_menu = tk.Menu(menu, tearoff = 0)
 aide_menu.add_command(label="Prise en main",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=prise_en_main)
-aide_menu.add_command(label="Documentation",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+aide_menu.add_command(label="Documentation",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700', command=docs)
 aide_menu.add_command(label="Code Source",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=code_source)
 aide_menu.add_command(label="Crédits",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
 menu.add_cascade(label="Aide", menu=aide_menu)
