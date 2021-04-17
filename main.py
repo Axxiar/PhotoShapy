@@ -25,7 +25,8 @@
 #                                                           🔄 En cours de développement 🔄
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
-
+ # afpt = à faire plus tard
+# l. = ligne
 
 ###########  importation des modules  ###########
 import tkinter as tk                                       
@@ -61,10 +62,11 @@ def open_img():
             print('too big')                    # |
             im = im.resize((im.width,150))      # |
         if im.width >= 60:                      # |
-            print('too large')                  # |
+            print('too large\n')                  # |
             im = im.resize((200,im.height))     # |
         photoim = ImageTk.PhotoImage(im)             # on charge l'image en élément ImageTk qu'on stocke dans im 
-        default_noimg.destroy()                      # voir l.afpt
+        
+        default_noimg.destroy()
 
         default_lbl.configure(image=photoim,bg='grey')  # on rajoute l'image au label default_lbl 
         default_lbl.image = photoim                     #   (celui qui n'aura pas de modifications pour afficher à l'utilisateur son image de départ) 
@@ -72,6 +74,18 @@ def open_img():
     except:                                   # mot-clé de python, relié à try : si le code dans try rencontre une erreur alors 
                                               #     (sans doute à cause d'un mauvais format dans notre cas)
         print('erreur')                       #  on print 'erreur'
+
+def delete_img():
+    global im
+    global default_noimg
+    if 'im' in globals():
+        default_noimg = tk.Label(frame4, width=60,height=20,bg='grey',text="Pas d'image",font=('Consolas',10),fg='white')
+        default_noimg.pack(pady=10,padx=10,side=tk.TOP)
+        
+        default_lbl.configure(image='',bg='#053f5e')  # on rajoute l'image au label default_lbl
+    else:
+        print("pas d'image")
+
 
 # def rotate():
 #     """fonction qui vérifie qu'une image est affichée et si oui qui la tourne de 45° à gauche puis la réaffiche"""
@@ -85,13 +99,7 @@ def open_img():
 #         print('Aucune image')
 
 
-def code_source():
-    """attribution : option "Code Source" du sous menu "Aide" (ligne 180)
-    description : ouvre à l'aide du module webbrowser le lien vers ce dépot github"""
-    
-    web.open_new_tab('https://github.com/AXXIAR/PhotoShapy')
-
-def destroy(event):
+def escape(event):
     """attribution : option "Quitter" du sous menu "Fichiers" (l.afpt)
     description : affiche un message de confirmation pour quitter (OK/CANCEL). 
         Ferme le widget sur lequel l'utilisateur est si OK (une fenêtre étant considérée comme un widget cela la fermera),
@@ -115,31 +123,47 @@ def prise_en_main():
     if alerte == True:              # alerte = True si l'utilisateur clique sur Yes
         web.open_new_tab('https://axxiar.github.io/PhotoShapy/')
     else:                           # alerte = False si l'utilisateur clique sur No
-        pem = tk.Tk()
-        pem.title('Prise en main')
-        pem.geometry(f'{master.winfo_width()-30}x{master.winfo_height()-30}')
-        pem.geometry("+40+60")
-        pem.config(bg='#022c43')
+        pem_master = tk.Tk()
+        pem_master.title('Prise en main')
+        pem_master.geometry(f'{master.winfo_width()-30}x{master.winfo_height()-30}')
+        pem_master.geometry("+40+60")
+        pem_master.config(bg='#022c43')
         master.destroy()
-        pem.mainloop()
+        pem_master.mainloop()
 
+
+def code_source():
+    """attribution : option "Code Source" du sous menu "Aide" (ligne 180)
+    description : ouvre à l'aide du module webbrowser le lien vers ce dépot github"""
     
+    web.open_new_tab('https://github.com/AXXIAR/PhotoShapy')
     
 
-def docs():
+def docu():
     #- renvoyer sur le site (docu à créer)
     """bloub"""
     alerte = messagebox.askyesno(title="Ouverture", message="Ouvrir en ligne ?")
     if alerte == True:              # alerte = True si l'utilisateur clique sur Yes
         web.open_new_tab('https://axxiar.github.io/PhotoShapy/')
     else:                           # alerte = False si l'utilisateur clique sur No
-        pem = tk.Tk()
-        pem.title('Prise en main')
-        pem.geometry(f'{master.winfo_width()-30}x{master.winfo_height()-30}')
-        pem.geometry("+40+60")
-        pem.config(bg='#022c43')
+        docu_master = tk.Tk()
+        docu_master.title('Prise en main')
+        docu_master.geometry(f'{master.winfo_width()-30}x{master.winfo_height()-30}')
+        docu_master.geometry("+40+60")
+        docu_master.config(bg='#022c43')
         master.destroy()
-        pem.mainloop()
+        docu_master.mainloop()
+
+
+def credit():
+    credit_master = tk.Tk()
+    credit_master.title('Prise en main')
+    credit_master.geometry(f'{master.winfo_width()-30}x{master.winfo_height()-30}')
+    credit_master.geometry("+40+60")
+    credit_master.config(bg='#022c43')
+    master.destroy()
+    credit_master.mainloop()
+
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -150,9 +174,9 @@ master = tk.Tk()                                           # stockage de la fen�
 master.title("PhotoShapy")                                 # changement du titre de la fenêtre
 master.config(bg='#022c43')                                # changement de l'arrière plan 
 master.geometry("1850x900")                                # définition de sa taille par défaut à l'ouverture
-master.geometry("+25+25")                                # définition de sa taille par défaut à l'ouverture
+master.geometry("+25+25")                                  # définition de sa position par défaut à l'ouverture (Décalage_Top ; Décalage_Left)
 
-master.bind('<Escape>', destroy)                           # lorsque, sur la fenêtre, la touche Echap est préssée, on appelle la fonction destroy (l.afpt)
+master.bind('<Escape>', escape)                           # lorsque, sur la fenêtre, la touche Echap est préssée, on appelle la fonction destroy (l.afpt)
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -174,7 +198,7 @@ separation2 = tk.Frame(frame2,bg='#ffd700')
 
 import_button = tk.Button(frame5, text = "Importer une photo",font=('Consolas'),bg="#115173",fg="#ffd700", command = open_img)
 modify_button = tk.Button(frame5, text = "Modifier la photo",font=('Consolas'),bg="#115173",fg="#ffd700")
-delete_button = tk.Button(frame5, text = "Effacer la photo",font=('Consolas'),bg="#115173",fg="#ffd700")
+delete_button = tk.Button(frame5, text = "Effacer la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=delete_img)
 lbl = tk.Label(frame3,width=130,height=43,bg='grey',text="Pas d'image",font=('Consolas'),fg='white')                    # lbl est un label qui contiendra l'image sur laquelle on verra les modifications
 default_noimg = tk.Label(frame4, width=60,height=20,bg='grey',text="Pas d'image",font=('Consolas',10),fg='white')       # default_noimg est le label par défaut quand il n'y a pas d'image
 default_lbl = tk.Label(frame4,bg='#053f5e')         # default_lbl est le label qui contiendra l'image par défaut sans ses changements
@@ -236,9 +260,9 @@ menu.add_cascade(label="Outils", menu=outils_menu)
 #sous-menu "Aide"
 aide_menu = tk.Menu(menu, tearoff = 0)
 aide_menu.add_command(label="Prise en main",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=prise_en_main)
-aide_menu.add_command(label="Documentation",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700', command=docs)
+aide_menu.add_command(label="Documentation",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700', command=docu)
 aide_menu.add_command(label="Code Source",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=code_source)
-aide_menu.add_command(label="Crédits",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+aide_menu.add_command(label="Crédits",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=credit)
 menu.add_cascade(label="Aide", menu=aide_menu)
 
 master.config(menu=menu)
