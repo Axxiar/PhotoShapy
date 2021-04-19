@@ -39,6 +39,55 @@ import webbrowser as web
 
 
 ######################################################    CREATION DES FONCTIONS    #####################################################
+def dest(*args):
+    for widget in args:
+        widget.destroy()
+
+def back_menu():
+    global import_button 
+    global modify_button
+    global delete_button
+    try:
+        dest(back,draw,filters,crop,rotate,adjust)
+    except:
+        print('pas encore')
+        
+
+    import_button = tk.Button(frame5, text = "Importer une photo",font=('Consolas'),bg="#115173",fg="#ffd700")
+    modify_button = tk.Button(frame5, text = "Modifier la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=modifier)
+    delete_button = tk.Button(frame5, text = "Effacer la photo",font=('Consolas'),bg="#115173",fg="#ffd700")
+    import_button.pack(padx=155,ipady=10,ipadx=10,pady=30)
+    modify_button.pack(ipady=10,ipadx=16,pady=30)
+    delete_button.pack(ipady=10,ipadx=20,pady=25)
+
+
+def modifier():
+    global back
+    global draw
+    global filters
+    global crop
+    global rotate
+    global adjust
+
+
+    dest(import_button,modify_button,delete_button)
+    
+    back = tk.Button(frame5, text = "<",font=('Consolas',20,'bold'),bg="#ffd700",fg="#115173",command=back_menu)
+
+    draw = tk.Button(frame5, text = "Désiner",font=('Consolas'),bg="#115173",fg="#ffd700")
+    crop = tk.Button(frame5, text = "Rogner",font=('Consolas'),bg="#115173",fg="#ffd700")
+    rotate = tk.Button(frame5, text = "Pivoter",font=('Consolas'),bg="#115173",fg="#ffd700")
+    filters = tk.Button(frame5, text = "Filtres",font=('Consolas'),bg="#115173",fg="#ffd700")
+    adjust = tk.Button(frame5, text = "Ajuster (RGB)",font=('Consolas'),bg="#115173",fg="#ffd700")
+
+    back.pack(side=tk.BOTTOM,pady=10,ipadx=30)
+    draw.pack(ipadx=60,ipady=5,pady=10)
+    crop.pack(ipadx=65,ipady=5,pady=10)
+    rotate.pack(ipadx=60,ipady=5,pady=10)
+    filters.pack(ipadx=60,ipady=5,pady=10)
+    adjust.pack(ipadx=33,ipady=5,pady=10)
+
+
 def open_img():
     """attribution : bouton "Importer" (l.afpt)
     description : permet d'ouvrir et de sélectionner depuis l'explorateur de fichiers une image 
@@ -197,7 +246,7 @@ separation2 = tk.Frame(frame2,bg='#ffd700')
 ################################################    CREATION DES BOUTONS ET LABELS   #####################################################
 
 import_button = tk.Button(frame5, text = "Importer une photo",font=('Consolas'),bg="#115173",fg="#ffd700", command = open_img)
-modify_button = tk.Button(frame5, text = "Modifier la photo",font=('Consolas'),bg="#115173",fg="#ffd700")
+modify_button = tk.Button(frame5, text = "Modifier la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=modifier)
 delete_button = tk.Button(frame5, text = "Effacer la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=delete_img)
 lbl = tk.Label(frame3,width=130,height=43,bg='grey',text="Pas d'image",font=('Consolas'),fg='white')                    # lbl est un label qui contiendra l'image sur laquelle on verra les modifications
 default_noimg = tk.Label(frame4, width=60,height=20,bg='grey',text="Pas d'image",font=('Consolas',10),fg='white')       # default_noimg est le label par défaut quand il n'y a pas d'image
