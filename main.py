@@ -35,16 +35,14 @@ from PIL import Image,ImageTk
 import os
 import time
 import webbrowser as web
+from fonctions import dest,f_getting_started,source_code,f_doc,f_credit
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
 ######################################################    CREATION DES FONCTIONS    #####################################################
-def dest(*args):
-    for widget in args:
-        widget.destroy()
 
 def back_menu():
-    global import_button 
+    global import_button
     global modify_button
     global delete_button
     try:
@@ -52,16 +50,15 @@ def back_menu():
     except:
         print('pas encore')
         
-
-    import_button = tk.Button(frame5, text = "Importer une photo",font=('Consolas'),bg="#115173",fg="#ffd700")
-    modify_button = tk.Button(frame5, text = "Modifier la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=modifier)
-    delete_button = tk.Button(frame5, text = "Effacer la photo",font=('Consolas'),bg="#115173",fg="#ffd700")
+    import_button = tk.Button(frame5, text = "Importer une photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=open_img)
+    modify_button = tk.Button(frame5, text = "Modifier la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=modify)
+    delete_button = tk.Button(frame5, text = "Effacer la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=delete_img)
     import_button.pack(padx=155,ipady=10,ipadx=10,pady=30)
     modify_button.pack(ipady=10,ipadx=16,pady=30)
     delete_button.pack(ipady=10,ipadx=20,pady=25)
 
 
-def modifier():
+def modify():
     global back
     global draw
     global filters
@@ -69,12 +66,11 @@ def modifier():
     global rotate
     global adjust
 
-
     dest(import_button,modify_button,delete_button)
     
     back = tk.Button(frame5, text = "<",font=('Consolas',20,'bold'),bg="#ffd700",fg="#115173",command=back_menu)
 
-    draw = tk.Button(frame5, text = "Désiner",font=('Consolas'),bg="#115173",fg="#ffd700")
+    draw = tk.Button(frame5, text = "Dessiner",font=('Consolas'),bg="#115173",fg="#ffd700")
     crop = tk.Button(frame5, text = "Rogner",font=('Consolas'),bg="#115173",fg="#ffd700")
     rotate = tk.Button(frame5, text = "Pivoter",font=('Consolas'),bg="#115173",fg="#ffd700")
     filters = tk.Button(frame5, text = "Filtres",font=('Consolas'),bg="#115173",fg="#ffd700")
@@ -132,6 +128,7 @@ def delete_img():
         default_noimg.pack(pady=10,padx=10,side=tk.TOP)
         
         default_lbl.configure(image='',bg='#053f5e')  # on rajoute l'image au label default_lbl
+        del im
     else:
         print("pas d'image")
 
@@ -148,7 +145,7 @@ def delete_img():
 #         print('Aucune image')
 
 
-def escape(event):
+def close(event):
     """attribution : option "Quitter" du sous menu "Fichiers" (l.afpt)
     description : affiche un message de confirmation pour quitter (OK/CANCEL). 
         Ferme le widget sur lequel l'utilisateur est si OK (une fenêtre étant considérée comme un widget cela la fermera),
@@ -165,53 +162,27 @@ def escape(event):
     else:                           # alerte = False si l'utilisateur clique sur CANCEL
         pass                                    # on ne fait rien (la boîte est fermée par défaut) ... retour à l'application
 
-def prise_en_main():
-    """attribution : option "Prise En Main" du sous menu "Outils" (l.afpt)
-    description : --à venir--"""
-    alerte = messagebox.askyesno(title="Ouverture", message="Ouvrir en ligne ?")
-    if alerte == True:              # alerte = True si l'utilisateur clique sur Yes
-        web.open_new_tab('https://axxiar.github.io/PhotoShapy/')
-    else:                           # alerte = False si l'utilisateur clique sur No
-        pem_master = tk.Tk()
-        pem_master.title('Prise en main')
-        pem_master.geometry(f'{master.winfo_width()-30}x{master.winfo_height()-30}')
-        pem_master.geometry("+40+60")
-        pem_master.config(bg='#022c43')
-        master.destroy()
-        pem_master.mainloop()
-
-
-def code_source():
-    """attribution : option "Code Source" du sous menu "Aide" (ligne 180)
-    description : ouvre à l'aide du module webbrowser le lien vers ce dépot github"""
-    
-    web.open_new_tab('https://github.com/AXXIAR/PhotoShapy')
+def getting_started():
+    """"""
+    masterx=master.winfo_width()
+    mastery=master.winfo_height()
+    f_getting_started(masterx,mastery)
     
 
-def docu():
+def doc():
     #- renvoyer sur le site (docu à créer)
     """bloub"""
-    alerte = messagebox.askyesno(title="Ouverture", message="Ouvrir en ligne ?")
-    if alerte == True:              # alerte = True si l'utilisateur clique sur Yes
-        web.open_new_tab('https://axxiar.github.io/PhotoShapy/')
-    else:                           # alerte = False si l'utilisateur clique sur No
-        docu_master = tk.Tk()
-        docu_master.title('Prise en main')
-        docu_master.geometry(f'{master.winfo_width()-30}x{master.winfo_height()-30}')
-        docu_master.geometry("+40+60")
-        docu_master.config(bg='#022c43')
-        master.destroy()
-        docu_master.mainloop()
+    masterx=master.winfo_width()
+    mastery=master.winfo_height()
+    f_doc(masterx,mastery)
 
 
 def credit():
-    credit_master = tk.Tk()
-    credit_master.title('Prise en main')
-    credit_master.geometry(f'{master.winfo_width()-30}x{master.winfo_height()-30}')
-    credit_master.geometry("+40+60")
-    credit_master.config(bg='#022c43')
-    master.destroy()
-    credit_master.mainloop()
+    """"""
+    masterx=master.winfo_width()
+    mastery=master.winfo_height()
+    f_credit(masterx,mastery)
+    
 
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -225,7 +196,7 @@ master.config(bg='#022c43')                                # changement de l'arr
 master.geometry("1850x900")                                # définition de sa taille par défaut à l'ouverture
 master.geometry("+25+25")                                  # définition de sa position par défaut à l'ouverture (Décalage_Top ; Décalage_Left)
 
-master.bind('<Escape>', escape)                           # lorsque, sur la fenêtre, la touche Echap est préssée, on appelle la fonction destroy (l.afpt)
+master.bind('<Escape>', close)                           # lorsque, sur la fenêtre, la touche Echap est préssée, on appelle la fonction destroy (l.afpt)
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -246,7 +217,7 @@ separation2 = tk.Frame(frame2,bg='#ffd700')
 ################################################    CREATION DES BOUTONS ET LABELS   #####################################################
 
 import_button = tk.Button(frame5, text = "Importer une photo",font=('Consolas'),bg="#115173",fg="#ffd700", command = open_img)
-modify_button = tk.Button(frame5, text = "Modifier la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=modifier)
+modify_button = tk.Button(frame5, text = "Modifier la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=modify)
 delete_button = tk.Button(frame5, text = "Effacer la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=delete_img)
 lbl = tk.Label(frame3,width=130,height=43,bg='grey',text="Pas d'image",font=('Consolas'),fg='white')                    # lbl est un label qui contiendra l'image sur laquelle on verra les modifications
 default_noimg = tk.Label(frame4, width=60,height=20,bg='grey',text="Pas d'image",font=('Consolas',10),fg='white')       # default_noimg est le label par défaut quand il n'y a pas d'image
@@ -294,25 +265,25 @@ file_menu.add_command(label="Importer",accelerator='Ctrl+I',background='#053f5e'
 file_menu.add_command(label="Enregistrer",accelerator='Ctrl+S',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
 file_menu.add_command(label="Enregistrer sous",accelerator='Ctrl+Alt+S',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
 file_menu.add_separator(background='#053f5e')
-file_menu.add_command(label="Quitter",command=master.destroy,accelerator='Echap',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+file_menu.add_command(label="Quitter",accelerator='Echap',background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=master.destroy)
 
 
 #sous-menu "Outils"
-outils_menu = tk.Menu(menu, tearoff = 0)
-outils_menu.add_command(label="Ajuster (RGB)",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
-outils_menu.add_command(label="Rogner",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
-outils_menu.add_command(label="Filtres",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
-outils_menu.add_command(label="Dessiner",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
-outils_menu.add_command(label="Pivoter",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
-menu.add_cascade(label="Outils", menu=outils_menu)
+tools_menu = tk.Menu(menu, tearoff = 0)
+tools_menu.add_command(label="Ajuster (RGB)",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+tools_menu.add_command(label="Rogner",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+tools_menu.add_command(label="Filtres",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+tools_menu.add_command(label="Dessiner",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+tools_menu.add_command(label="Pivoter",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+menu.add_cascade(label="Outils", menu=tools_menu)
 
 #sous-menu "Aide"
-aide_menu = tk.Menu(menu, tearoff = 0)
-aide_menu.add_command(label="Prise en main",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=prise_en_main)
-aide_menu.add_command(label="Documentation",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700', command=docu)
-aide_menu.add_command(label="Code Source",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=code_source)
-aide_menu.add_command(label="Crédits",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=credit)
-menu.add_cascade(label="Aide", menu=aide_menu)
+help_menu = tk.Menu(menu, tearoff = 0)
+help_menu.add_command(label="Prise en main",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=getting_started)
+help_menu.add_command(label="Documentation",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700', command=doc)
+help_menu.add_command(label="Code Source",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=source_code)
+help_menu.add_command(label="Crédits",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=credit)
+menu.add_cascade(label="Aide", menu=help_menu)
 
 master.config(menu=menu)
 # ----------------------------------------------------------------------------------------------------------------------------------------
