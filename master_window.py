@@ -106,9 +106,12 @@ separation2 = tk.Frame(frame2,bg='#ffd700')
 import_button = tk.Button(frame5, text = "Importer une photo",font=('Consolas'),bg="#115173",fg="#ffd700", command = open_img)
 modify_button = tk.Button(frame5, text = "Modifier la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=modify)
 delete_button = tk.Button(frame5, text = "Effacer la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=delete_img)
-lbl = tk.Label(frame3,width=130,height=43,bg='grey',text="Pas d'image",font=('Consolas'),fg='white')                    # lbl est un label qui contiendra l'image sur laquelle on verra les modifications
-default_noimg = tk.Label(frame4, width=60,height=20,bg='grey',text="Pas d'image",font=('Consolas',10),fg='white')       # default_noimg est le label par défaut quand il n'y a pas d'image
-default_lbl = tk.Label(frame4,bg='#053f5e')         # default_lbl est le label qui contiendra l'image par défaut sans ses changements
+
+lbl_noimg = tk.Label(frame3,width=130,height=43,bg='grey',text="Pas d'image",font=('Consolas'),fg='white')              # lbl_noimg est le label central quand il n'y a pas d'image
+lbl = tk.Label(frame3,bg='#053f5e',width=1,height=1)                 # lbl est un label qui contiendra l'image sur laquelle on verra les modifications
+lbl2 = tk.Label(frame3,bg='#053f5e',width=1,height=1)                # ce label sert uniquement à 
+default_noimg = tk.Label(frame4, width=60,height=20,bg='grey',text="Pas d'image",font=('Consolas',10),fg='white')       # default_noimg est le label en haut à gauche quand il n'y a pas d'image
+default_lbl = tk.Label(frame4,bg='#053f5e')                          # default_lbl est le label qui contiendra l'image par défaut sans ses changements
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -121,9 +124,13 @@ default_lbl = tk.Label(frame4,bg='#053f5e')         # default_lbl est le label q
 import_button.pack(padx=155,ipady=10,ipadx=10,pady=30)
 modify_button.pack(ipady=10,ipadx=16,pady=30)
 delete_button.pack(ipady=10,ipadx=20,pady=25)
-lbl.pack(pady=10,padx=10,expand=tk.YES)
+lbl.pack(side=tk.TOP)
+
+lbl_noimg.pack(pady=10,padx=10,expand=tk.YES)
+lbl2.pack(side=tk.BOTTOM)
 default_lbl.pack(side=tk.TOP)
 default_noimg.pack(pady=10,padx=10,side=tk.TOP)
+
 
 frame1.pack(fill=tk.BOTH,expand=tk.YES)
 frame2.pack(padx=20,ipadx=20,ipady=20,side=tk.LEFT)

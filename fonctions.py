@@ -4,6 +4,7 @@ from PIL import Image,ImageTk
 import os
 import time
 import webbrowser as web
+import traceback
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -91,26 +92,47 @@ def f_open_img(default_lbl,default_noimg):
     #   filetypes définit les extensions que l'utilisateur peut choisir
     
     filename = filedialog.askopenfilename(title="Ouvrir un fichier",initialdir= os.getcwd(),filetype=((".png","*.png"), (".jpg","*.jpg"), (".jfif","*.jfif"), ("Tous les fichiers","*")))
+    
     try:                                                        # try fait comprendre à python qu'on essaye quelque chose
-        im = Image.open(filename)           # ici on charge la photo sélectionnée et on la stocke dans im 
+        default_im, im  = Image.open(filename)           # ici on charge la photo sélectionnée et on la stocke dans 'im' et 'default_im'
+                                                         #      default_img
                                             #(le fichier choisit peut ne pas être dans un format accepté par Pillow) d'où le try:
-        
-        if im.height >= 20:                     # pas besoins de commenter ca sera modifié
-            print('too big')                    # |
-            im = im.resize((im.width,150))      # |
-        if im.width >= 60:                      # |
-            print('too large\n')                  # |
-            im = im.resize((200,im.height))     # |
+
+
+        if im.height > 300:                     # pas besoins de commenter ca sera modifié
+            diff = im.height - 300
+            if im.width > diff:
+                im = im.resize((im.width - diff , 300))      # |
+            else:
+                im = im.resize((im.width , 300))
+
+        if im.width > 420:                      # |
+            diff = im.width - 420              # |
+            if im.height > diff:
+                im = im.resize((420 , im.height - diff))     # |
+            else:
+                im = im.resize((420 , im.height))     # |
+
+        if im.height <= 30:
+            diff = 30 - im.height
+            im = im.resize((im.width + diff , 30))
+        if im.width <= 150:
+            diff = 150 - im.width
+            im = im.resize((150 , im.height + diff))
+
+
+
         photoim = ImageTk.PhotoImage(im)             # on charge l'image en élément ImageTk qu'on stocke dans im 
-        
+        #1176 823
         default_noimg.destroy()
 
         default_lbl.configure(image=photoim,bg='grey')  # on rajoute l'image au label default_lbl 
         default_lbl.image = photoim                     #   (celui qui n'aura pas de modifications pour afficher à l'utilisateur son image de départ) 
         
-    except:                                   # mot-clé de python, relié à try : si le code dans try rencontre une erreur alors 
+    except Exception:                                   # mot-clé de python, relié à try : si le code dans try rencontre une erreur alors 
                                               #     (sans doute à cause d'un mauvais format dans notre cas)
-        print('erreur')                       #  on print 'erreur'
+        print(traceback.format_exc())
+        
 
 
 def f_delete_img(default_lbl,frame4):
