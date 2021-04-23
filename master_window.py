@@ -27,15 +27,15 @@ def open_img():
     f_open_img(default_lbl,default_noimg)
 
 def delete_img():
-    f_delete_img(default_lbl,frame4)
+    f_delete_img(default_noimg,default_lbl,frame4)
 
 
 # def rotate():
 #     """fonction qui vérifie qu'une image est affichée et si oui qui la tourne de 45° à gauche puis la réaffiche"""
 #     global photoim,im
 #     if 'im' in globals():       # on vérifie si la variable existe dans les variables globales (en gros si on a une image ouverte dans la fenêtre)
-#         im = im.rotate(45,expand=True)
-#         photoim = ImageTk.PhotoImage(im)
+#         default_im= im.rotate(45,expand=True)
+#         photodefault_im= ImageTk.PhotoImage(im)
 #         lbl.configure(image = photoim)
 #         lbl.image = photoim
 #     else:

@@ -55,32 +55,32 @@ def rotate_window():
         """attribution : bouton "Importer" (l.afpt)
         description : permet d'ouvrir et de sélectionner depuis l'explorateur de fichiers une image 
         puis de la charger dans la fenêtre"""
-        global im                          # permet à la variable im d'être aussi utilisée en dehors de cette fonction 
+        global default_im                         # permet à la variable default_imd'être aussi utilisée en dehors de cette fonction 
         global photoim
         global image
 
         filename = filedialog.askopenfilename(title="Ouvrir un fichier",initialdir= os.getcwd(),filetype=((".png","*.png"), (".jpg","*.jpg"), (".jfif","*.jfif"), ("Tous les fichiers","*")))
         try:                                                        # try fait comprendre à python qu'on essaye quelque chose
-            im = Image.open(filename)           # ici on charge la photo sélectionnée et on la stocke dans im 
+            default_im= Image.open(filename)           # ici on charge la photo sélectionnée et on la stocke dans default_im
                                                 #(le fichier choisit peut ne pas être dans un format accepté par Pillow) d'où le try:
             
             if im.height >= 20:                     # pas besoins de commenter ca sera modifié
                 print('too big')                    # |
-                im = im.resize((im.width,150))      # |
+                default_im= im.resize((im.width,150))      # |
             if im.width >= 60:                      # |
                 print('too large\n')                # |
-                im = im.resize((200,im.height))     # |
+                default_im= im.resize((200,im.height))     # |
             
             image = im
-            photoim = ImageTk.PhotoImage(im)             # on charge l'image en élément ImageTk qu'on stocke dans im 
+            photodefault_im= ImageTk.PhotoImage(im)             # on charge l'image en élément ImageTk qu'on stocke dans default_im
             
             default_noimg.destroy()
 
             default_lbl.configure(image=photoim,bg='grey')  # on rajoute l'image au label default_lbl 
-            default_lbl.image = photoim                     #   (celui qui n'aura pas de modifications pour afficher à l'utilisateur son image de départ) 
+            default_lbl.image = photodefault_im                    #   (celui qui n'aura pas de modifications pour afficher à l'utilisateur son image de départ) 
 
             lbl.configure(image=photoim)
-            lbl.image =photoim 
+            lbl.image =photodefault_im
             
         except:                                   # mot-clé de python, relié à try : si le code dans try rencontre une erreur alors 
                                                 #     (sans doute à cause d'un mauvais format dans notre cas)
@@ -147,7 +147,7 @@ def rotate_window():
                 image = image.transpose(Image.ROTATE_90)
             elif side == 'right':
                 image = image.transpose(Image.ROTATE_270)
-            photoim = ImageTk.PhotoImage(image)
+            photodefault_im= ImageTk.PhotoImage(image)
             default_lbl.configure(image=photoim)
         else:
             print("pas d'image")
@@ -160,7 +160,7 @@ def rotate_window():
                 image = image.transpose(Image.FLIP_LEFT_RIGHT)
             elif orientation == 'vertical':
                 image = image.transpose(Image.FLIP_TOP_BOTTOM)
-            photoim = ImageTk.PhotoImage(image)
+            photodefault_im= ImageTk.PhotoImage(image)
             default_lbl.configure(image=photoim)
         else:
             print("pas d'image")
