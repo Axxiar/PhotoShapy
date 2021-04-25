@@ -3,7 +3,7 @@ PhotoShape est un éditeur basique d'images en python
 
 
 ## Actions :
-- [ ] Charger des images (en cours, presque finit)
+- [X] Charger des images 
 - [ ] Sauvegarder sous différents formats
 - [ ] Ajuster les couleurs RGB
 - [ ] Dessiner
