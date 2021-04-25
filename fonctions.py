@@ -67,7 +67,7 @@ def f_back_menu(default_lbl,default_noimg,frame4,frame5):
         
     import_button = tk.Button(frame5, text = "Importer une photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=lambda:f_open_img(default_lbl,default_noimg))
     modify_button = tk.Button(frame5, text = "Modifier la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=lambda:f_modify(default_lbl,default_noimg,import_button,modify_button,delete_button,frame4,frame5))
-    delete_button = tk.Button(frame5, text = "Effacer la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=lambda:f_delete_img(default_noimg,default_lbl,frame4))
+    delete_button = tk.Button(frame5, text = "Effacer la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=lambda:f_delete_img(default_lbl,default_noimg,frame4))
     import_button.pack(padx=155,ipady=10,ipadx=10,pady=30)
     modify_button.pack(ipady=10,ipadx=16,pady=30)
     delete_button.pack(ipady=10,ipadx=20,pady=25)
@@ -94,14 +94,14 @@ def f_open_img(default_lbl,default_noimg):
     filename = filedialog.askopenfilename(title="Ouvrir un fichier",initialdir= os.getcwd(),filetype=((".png","*.png"), (".jpg","*.jpg"), (".jfif","*.jfif"), ("Tous les fichiers","*")))
     
     try:                                                        # try fait comprendre à python qu'on essaye quelque chose
-        im = default_im = Image.open(filename)           # ici on charge la photo sélectionnée et on la stocke dans 'default_im'
-        # im = default_im
+        im = Image.open(filename)           # ici on charge la photo sélectionnée et on la stocke dans 'default_im'
+        default_im = im
                                                          #      default_img
                                             #(le fichier choisit peut ne pas être dans un format accepté par Pillow) d'où le try:
 
 
         if default_im.height > 300:                     # pas besoins de commenter ca sera modifié
-            diff = im.height - 300
+            diff = default_im.height - 300
             if default_im.width > diff:
                 default_im= default_im.resize((default_im.width - diff , 300))      # |
             else:
@@ -110,13 +110,13 @@ def f_open_img(default_lbl,default_noimg):
         if default_im.width > 420:                      # |
             diff = default_im.width - 420              # |
             if default_im.height > diff:
-                default_im= default_im.resize((420 , default_im.height - diff))     # |
+                default_im = default_im.resize((420 , default_im.height - diff))     # |
             else:
-                default_im= default_im.resize((420 , default_im.height))     # |
+                default_im = default_im.resize((420 , default_im.height))     # |
 
         if default_im.height <= 30:
             diff = 30 - default_im.height
-            default_im= default_im.resize((default_im.width + diff , 30))
+            default_im = default_im.resize((default_im.width + diff , 30))
         if default_im.width <= 150:
             diff = 150 - default_im.width
             default_im = default_im.resize((150 , default_im.height + diff))
@@ -125,12 +125,15 @@ def f_open_img(default_lbl,default_noimg):
 
         default_photoim = ImageTk.PhotoImage(default_im)             # on charge l'image en élément ImageTk qu'on stocke dans default_im
         #1176 823
-        if 'default_noimg' in globals():
-            print('yes')
+        if 'default_noimg' in locals():
+            print('local')
+        elif 'default_noimg' in globals():
+            print('global')
         else:
-            print('no')
-        default_noimg.destroy()
-
+            print("doesn't exist")
+        default_noimg.pack_forget()
+        #pack_forget()
+        
         default_lbl.configure(image=default_photoim,bg='grey')  # on rajoute l'image au label default_lbl 
         default_lbl.image = default_photoim                   #   (celui qui n'aura pas de modifications pour afficher à l'utilisateur son image de départ) 
         
@@ -140,10 +143,10 @@ def f_open_img(default_lbl,default_noimg):
         
 
 
-def f_delete_img(default_noimg,default_lbl,frame4):
+def f_delete_img(default_lbl,default_noimg,frame4):
     global default_im
     if 'default_im' in globals():
-        default_noimg = tk.Label(frame4, width=60,height=20,bg='grey',text="Pas d'image",font=('Consolas',10),fg='white')
+        
         default_noimg.pack(pady=10,padx=10,side=tk.TOP)
         
         default_lbl.configure(image='',bg='#053f5e')  # on rajoute l'image au label default_lbl

@@ -27,7 +27,7 @@ def open_img():
     f_open_img(default_lbl,default_noimg)
 
 def delete_img():
-    f_delete_img(default_noimg,default_lbl,frame4)
+    f_delete_img(default_lbl,default_noimg,frame4)
 
 
 # def rotate():
