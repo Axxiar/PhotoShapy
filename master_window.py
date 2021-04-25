@@ -11,24 +11,25 @@ import os
 import time
 import webbrowser as web
 from fonctions import *
+from test import t_rotate_window
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
 ######################################################    CREATION DES FONCTIONS    #####################################################
+def rotate_window():
+    f_rotate_window(master)
 
 def initialization():
     pass
 
 def modify():
-    f_modify(default_lbl,default_noimg,import_button,modify_button,delete_button,frame4,frame5)
-
+    f_modify(default_lbl,default_noimg,lbl,import_button,modify_button,delete_button,frame2,frame4,frame5,master)
 
 def open_img():
-    f_open_img(default_lbl,default_noimg)
+    f_open_img(default_lbl,default_noimg,lbl)
 
 def delete_img():
-    f_delete_img(default_lbl,default_noimg,frame4)
-
+    f_delete_img(default_lbl,default_noimg,lbl,frame4)
 
 # def rotate():
 #     """fonction qui vérifie qu'une image est affichée et si oui qui la tourne de 45° à gauche puis la réaffiche"""
@@ -107,9 +108,9 @@ import_button = tk.Button(frame5, text = "Importer une photo",font=('Consolas'),
 modify_button = tk.Button(frame5, text = "Modifier la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=modify)
 delete_button = tk.Button(frame5, text = "Effacer la photo",font=('Consolas'),bg="#115173",fg="#ffd700",command=delete_img)
 
-lbl_noimg = tk.Label(frame3,width=130,height=43,bg='grey',text="Pas d'image",font=('Consolas'),fg='white')              # lbl_noimg est le label central quand il n'y a pas d'image
-lbl = tk.Label(frame3,bg='#053f5e',width=1,height=1)                 # lbl est un label qui contiendra l'image sur laquelle on verra les modifications
-lbl2 = tk.Label(frame3,bg='#053f5e',width=1,height=1)                # ce label sert uniquement à 
+
+lbl = tk.Label(frame3,width=130,height=43,bg='grey',text="Pas d'image",font=('Consolas'),fg='white')              # lbl_noimg est le label central quand il n'y a pas d'image
+
 default_noimg = tk.Label(frame4, width=60,height=20,bg='grey',text="Pas d'image",font=('Consolas',10),fg='white')       # default_noimg est le label en haut à gauche quand il n'y a pas d'image
 default_lbl = tk.Label(frame4,bg='#053f5e')                          # default_lbl est le label qui contiendra l'image par défaut sans ses changements
 # ----------------------------------------------------------------------------------------------------------------------------------------
@@ -124,10 +125,8 @@ default_lbl = tk.Label(frame4,bg='#053f5e')                          # default_l
 import_button.pack(padx=155,ipady=10,ipadx=10,pady=30)
 modify_button.pack(ipady=10,ipadx=16,pady=30)
 delete_button.pack(ipady=10,ipadx=20,pady=25)
-lbl.pack(side=tk.TOP)
 
-lbl_noimg.pack(pady=10,padx=10,expand=tk.YES)
-lbl2.pack(side=tk.BOTTOM)
+lbl.pack(pady=10,padx=10,expand=tk.YES)
 default_lbl.pack(side=tk.TOP)
 default_noimg.pack(pady=10,padx=10,side=tk.TOP)
 
@@ -168,7 +167,7 @@ tools_menu.add_command(label="Ajuster (RGB)",background='#053f5e',foreground='#f
 tools_menu.add_command(label="Rogner",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
 tools_menu.add_command(label="Filtres",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
 tools_menu.add_command(label="Dessiner",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
-tools_menu.add_command(label="Pivoter",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
+tools_menu.add_command(label="Pivoter",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=rotate_window)
 menu.add_cascade(label="Outils", menu=tools_menu)
 
 #sous-menu "Aide"
