@@ -5,4 +5,4 @@
 - https://www.youtube.com/channel/UCFB0dxMudkws1q8w5NJEAmw
 - https://www.tutorialspoint.com/python/python_gui_programming.htm
 - https://www.tutorialspoint.com/python_pillow/index.htm
-- a
+- https://developer.mozilla.org/fr/
