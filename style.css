@@ -29,24 +29,6 @@ h1{
 #cs {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
-  color: #115173;
-  text-decoration: none;
-  position: relative;
-}
-
-#cs::after {
-  content: '';
-  display: block;
-  position:absolute;
-  width: 0%;
-  height: 3px;
-  left: 0;
-  background-color: #115173;
-  transition: width 0.5s;
-}
-
-#cs:hover::after {
-  width: 100%;
 }
 
 #madeby {
@@ -63,26 +45,14 @@ p{
 }
 
 
-#milow, #axxiar {
+.mention {
   color: #ffd700;
   text-decoration: none;
-  position: relative;
-  transition-duration: 0.9s;
+  transition-duration: 1s;
 }
 
-#milow::after, #axxiar::after {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 0.0%;
-  height: 2px;
-  left: 0;
-  background-color: #ffd700;
-  transition: width 0.5s;
-}
-
-#milow:hover::after, #axxiar:hover::after {
-  width: 100%;
+.mention:hover {
+  color: #ffee00;
 }
 
 img {
@@ -94,7 +64,6 @@ img {
   translateZ(8rem);
   transition: 0.35s ease;
 }
-
 img:hover {
   transform: scale(0.8);
   border-radius: 10px;
