@@ -5,18 +5,40 @@
     <title>PhotoShapy</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <link href="/style.css" rel="stylesheet">
+    <link href="/style.css" rel="stylesheet"> 
   </head>
   <body>
     <div id="top">
       <h1><b>PHOTOSHAPY</b></h1>
     </div>
       <p>Photoshapy is a basic image editor using Python</p>
-      <h3 style='text-align:center;'><a id="cs" href="https://github.com/AXXIAR/PhotoShapy">Code source</a></h3>
-      
      <img src="https://d1fmx1rbmqrxrr.cloudfront.net/cnet/optim/i/edit/2019/04/eso1644bsmall__w770.jpg">
+     
+     <h3 style='text-align:center;'><a id="cs" href="https://github.com/AXXIAR/PhotoShapy">Source Code</a></h3>
+     
     <div id="footer">
-    <h3 id="madeby">Made by <a class="mention" href="https://github.com/MIL0W">@Milow</a> & <a class="mention" href="https://github.com/AXXIAR">@Axxiar</a></h3>
+    <h3 id="madeby">Made by <a id="milow" href="https://github.com/MIL0W">Milow</a> & <a id="axxiar" href="https://github.com/AXXIAR">Axxiar</a></h3>
+    <script>
+const milow = document.querySelector('#milow');
+const axxiar = document.querySelector('#axxiar');
+
+milow.addEventListener('mouseover', () => {
+	milow.innerHTML = '@'+milow.innerHTML
+})
+
+axxiar.addEventListener('mouseover', () => {
+	axxiar.innerHTML = '@'+axxiar.innerHTML
+})
+
+
+milow.addEventListener('mouseout', () => {
+	milow.innerHTML = 'Milow'
+})
+
+axxiar.addEventListener('mouseout', () => {
+	axxiar.innerHTML = 'Axxiar'
+})
+    </script>
     </div>
   </body>
 </html>
