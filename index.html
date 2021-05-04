@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>PhotoShapy</title>
+    <link href="https://axxiar.github.io/PhotoShapy/style.css" type="text/css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <link href="https://axxiar.github.io/PhotoShapy/style.css" type="text/css" rel="stylesheet">
   </head>
   <body>
     <div id="top">
@@ -18,7 +18,28 @@
      
     <div id="footer">
     <h3 id="madeby">Made by <a id="milow" href="https://github.com/MIL0W">Milow</a> & <a id="axxiar" href="https://github.com/AXXIAR">Axxiar</a></h3>
-    
     </div>
+    
+    <script>
+const milow = document.querySelector('#milow');
+const axxiar = document.querySelector('#axxiar');
+
+milow.addEventListener('mouseover', () => {
+	milow.innerHTML = '@'+milow.innerHTML
+})
+
+axxiar.addEventListener('mouseover', () => {
+	axxiar.innerHTML = '@'+axxiar.innerHTML
+})
+
+
+milow.addEventListener('mouseout', () => {
+	milow.innerHTML = 'Milow'
+})
+
+axxiar.addEventListener('mouseout', () => {
+	axxiar.innerHTML = 'Axxiar'
+})
+    </script>
   </body>
 </html>
