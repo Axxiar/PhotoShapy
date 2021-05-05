@@ -99,7 +99,7 @@ img {
   display: block;
   border-radius: 10px;
   margin: 50px auto 50px auto;
-  box-shadow: 4px 4px 2px rgb(73, 73, 73), -4px 4px 2px rgb(73, 73, 73), 4px -4px 2px rgb(73, 73, 73), -4px -4px 2px rgb(73, 73, 73);
+  box-shadow: 4px 4px 2px #ffd700 , -4px 4px 2px #ffd700, 4px -4px 2px #ffd700, -4px -4px 2px #ffd700;
 }
 
 
