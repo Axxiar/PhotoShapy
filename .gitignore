@@ -1,1 +1,7 @@
-.vscode
+.vscode/
+__pycache__/
+
+test.py
+test2.py
+test.png
+tenor.gif
