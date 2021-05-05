@@ -11,13 +11,13 @@ import os
 import time
 import webbrowser as web
 from fonctions import *
-from test import t_rotate_window
+
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
 ######################################################    CREATION DES FONCTIONS    #####################################################
 def rotate_window():
-    f_rotate_window(master)
+    f_rotate_window(master,lbl)
 
 def initialization():
     pass

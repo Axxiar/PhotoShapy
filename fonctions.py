@@ -5,7 +5,7 @@ import os
 import time
 import webbrowser as web
 import traceback
-from test import t_rotate_window
+from toplevels import t_rotate_window
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -47,7 +47,7 @@ def f_modify(default_lbl,default_noimg,lbl,import_button,modify_button,delete_bu
 
     draw = tk.Button(frame5, text = "Dessiner",font=('Consolas'),bg="#115173",fg="#ffd700")
     crop = tk.Button(frame5, text = "Rogner",font=('Consolas'),bg="#115173",fg="#ffd700")
-    rotate = tk.Button(frame5, text = "Pivoter",font=('Consolas'),bg="#115173",fg="#ffd700",command=lambda:f_rotate_window(master))
+    rotate = tk.Button(frame5, text = "Pivoter",font=('Consolas'),bg="#115173",fg="#ffd700",command=lambda:f_rotate_window(master,lbl))
     filters = tk.Button(frame5, text = "Filtres",font=('Consolas'),bg="#115173",fg="#ffd700")
     adjust = tk.Button(frame5, text = "Ajuster (RGB)",font=('Consolas'),bg="#115173",fg="#ffd700")
 
@@ -182,10 +182,10 @@ def f_delete_img(default_lbl,default_noimg,lbl,frame4):
 
 ####################################      FONCTIONS OUVRANT LES FENETRES DE MODIF D'IMAGE       #########################################
 
-def f_rotate_window(master):
+def f_rotate_window(master,lbl):
     global default_im,im
     if 'im' and 'default_im' in globals():
-        t_rotate_window(master)
+        t_rotate_window(master,lbl,im)
     else:
         print("Pas d'image")
 # ----------------------------------------------------------------------------------------------------------------------------------------
