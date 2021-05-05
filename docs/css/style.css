@@ -90,13 +90,13 @@ img {
   margin-left: auto;
   margin-right: auto;
   border-radius: 50px;
-  transform: scale(0.75)
+  transform: scale(0.45)
     translateZ(8rem);
   transition: 0.35s ease;
 }
 
 img:hover {
-  transform: scale(0.8);
+  transform: scale(0.6);
   border-radius: 10px;
   box-shadow: 8px 8px #ffd700, 8px -8px #ffd700, -8px 8px #ffd700, -8px -8px #ffd700;
 }
