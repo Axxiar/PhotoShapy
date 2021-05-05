@@ -3,21 +3,20 @@ PhotoShape est un éditeur basique d'images en python
 
 
 ## Actions :
-- [X] Charger des images 
-- [ ] Sauvegarder sous différents formats
-- [ ] Ajuster les couleurs RGB
-- [ ] Dessiner
-- [ ] Redimensionner
-- [ ] Mode Clair/Sombre
-- [ ] Raccourcis Clavier
-- [ ] Undo(/Redo?)
+- [X] Load images
+- [ ] Save to different extension
+- [ ] Adjust (RGB colors)
+- [X] Rotate
+- [ ] Crop
+- [ ] Resize
+- [ ] Keyboard shortcuts
 
-Ajouter des Filtres :
 
-- [ ] Effet de Flou
-- [ ] Effet noir & blanc
-- [ ] Effet ASCII
-- [ ] Effet Pastel (comme si l'image avait été peinte)
+Filters :
+
+- [ ] Blur effect
+- [ ] Black & white effect
+
 
 
 ## Code Couleur :
