@@ -169,7 +169,6 @@ tools_menu = tk.Menu(menu, tearoff = 0)
 tools_menu.add_command(label="Ajuster (RGB)",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
 tools_menu.add_command(label="Rogner",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
 tools_menu.add_command(label="Filtres",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=filters_window)
-tools_menu.add_command(label="Dessiner",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700')
 tools_menu.add_command(label="Pivoter",background='#053f5e',foreground='#ffd700',activeforeground='#053f5e',activebackground='#ffd700',command=rotate_window)
 menu.add_cascade(label="Outils", menu=tools_menu)
 

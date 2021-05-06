@@ -40,20 +40,18 @@ def f_close(event):
         pass                                    # on ne fait rien (la boîte est fermée par défaut) ... retour à l'application
 
 def f_modify(default_lbl,default_noimg,lbl,import_button,modify_button,delete_button,frame2,frame4,frame5,master):
-    global back,draw,filters,crop,rotate,adjust
+    global back,filters,crop,rotate,adjust
 
     dest(import_button,modify_button,delete_button)
     
     back = tk.Button(frame5, text = "<",font=('Consolas',20,'bold'),bg="#ffd700",fg="#115173",command=lambda:f_back_menu(default_lbl,default_noimg,lbl,frame2,frame4,frame5,master))
 
-    draw = tk.Button(frame5, text = "Dessiner",font=('Consolas'),bg="#115173",fg="#ffd700")
     crop = tk.Button(frame5, text = "Rogner",font=('Consolas'),bg="#115173",fg="#ffd700")
     rotate = tk.Button(frame5, text = "Pivoter",font=('Consolas'),bg="#115173",fg="#ffd700",command=lambda:f_rotate_window(master,lbl))
     filters = tk.Button(frame5, text = "Filtres",font=('Consolas'),bg="#115173",fg="#ffd700",command=lambda:f_filters_window(master,lbl))
     adjust = tk.Button(frame5, text = "Ajuster (RGB)",font=('Consolas'),bg="#115173",fg="#ffd700")
 
     back.pack(side=tk.BOTTOM,pady=10,ipadx=30)
-    draw.pack(ipadx=60,ipady=5,pady=10)
     crop.pack(ipadx=65,ipady=5,pady=10)
     rotate.pack(ipadx=60,ipady=5,pady=10)
     filters.pack(ipadx=60,ipady=5,pady=10)
@@ -61,9 +59,9 @@ def f_modify(default_lbl,default_noimg,lbl,import_button,modify_button,delete_bu
 
 def f_back_menu(default_lbl,default_noimg,lbl,frame2,frame4,frame5,master):
     global import_button, modify_button, delete_button
-    global back,draw,filters,crop,rotate,adjust
+    global back,filters,crop,rotate,adjust
     try:
-        dest(back,draw,filters,crop,rotate,adjust)
+        dest(back,filters,crop,rotate,adjust)
     except:
         print('pas encore')
         
