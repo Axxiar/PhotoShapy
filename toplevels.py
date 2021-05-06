@@ -64,13 +64,13 @@ def t_rotate_window(master,lbl,im):
     frame7.pack(pady=20)
     frame8.pack(pady=20)
 
-    pivoter_lbl = tk.Label(frame5,bg='#053f5e',text="Pivoter",font=('Consolas',15),fg='#ffd700')
+    pivoter_lbl = tk.Label(frame5,bg='#053f5e',text="PIVOTER",font=('Consolas',15),fg='#ffd700')
     pivoter_lbl.pack(side=tk.TOP,ipady=25)
 
     right_rotate = tk.Button(frame6, text = "↩",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:rotatest('left',im))
     left_rotate_button = tk.Button(frame6, text = "↪",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:rotatest('right',im))
 
-    retourner_lbl = tk.Label(frame8,bg='#053f5e',text="Retourner",font=('Consolas',15),fg='#ffd700')
+    retourner_lbl = tk.Label(frame8,bg='#053f5e',text="INVERSER",font=('Consolas',15),fg='#ffd700')
     retourner_lbl.pack(side=tk.TOP,pady=25)
 
     horizontal_flip_button = tk.Button(frame8, text = "↔",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700", command = lambda: flip('horizontal',im))
@@ -82,6 +82,8 @@ def t_rotate_window(master,lbl,im):
     left_rotate_button.pack(side=tk.LEFT,ipadx=10)
     horizontal_flip_button.pack(side=tk.LEFT,ipadx=10,padx=10)
     vertical_flip_button.pack(side=tk.LEFT,ipadx=10,padx=10) 
+
+
 
 
 
@@ -97,7 +99,19 @@ def t_filters_window(master, lbl, im):
         if choix == 'filtre3':
             im = im.convert(mode=("L"))
         if choix == 'filtre4':
-            im = im.filter(ImageFilter.DETAIL)
+            im = im.filter(ImageFilter.CONTOUR)
+        if choix == 'filtre10':
+            im = im.filter(ImageFilter.EDGE_ENHANCE)
+        if choix == 'filtre6':
+            im = im.filter(ImageFilter.EDGE_ENHANCE_MORE)
+        if choix == 'filtre7':
+            im = im.filter(ImageFilter.EMBOSS)
+        if choix == 'filtre8':
+            im = im.filter(ImageFilter.FIND_EDGES)
+        if choix == 'filtre9':
+            im = im.filter(ImageFilter.SMOOTH)
+        if choix == 'filtre5':
+            im = im.filter(ImageFilter.SMOOTH_MORE)
         photoim = ImageTk.PhotoImage(im)
         lbl.configure(image=photoim)
         lbl.image = photoim
@@ -107,8 +121,8 @@ def t_filters_window(master, lbl, im):
     filters_toplvl = tk.Toplevel(master)
     filters_toplvl.title("Filtres")
     filters_toplvl.config(bg='#053f5e')
-    filters_toplvl.geometry("250x400")
-    filters_toplvl.geometry("+150+510")
+    filters_toplvl.geometry("300x750")
+    filters_toplvl.geometry("+350+150")
 
     frame5 = tk.Frame(filters_toplvl,bg='#053f5e')
     frame6 = tk.Frame(filters_toplvl,bg='#053f5e')
@@ -121,15 +135,24 @@ def t_filters_window(master, lbl, im):
     frame7.pack(pady=20)
     frame8.pack(pady=20)
 
-    filtre_lbl = tk.Label(frame5,bg='#053f5e',text="Choisir un filtre",font=('Consolas',15),fg='#ffd700')
-    filtre_lbl.pack(side=tk.TOP,ipady=25)
+    filtre_lbl = tk.Label(frame5,bg='#053f5e',text="CHOISIR UN FILTRE",font=('Consolas',15),fg='#ffd700')
+    filtre_lbl.pack(side=tk.TOP,ipady=10,pady=8)
 
-    filtre_1 = tk.Button(frame6, text = "filtre 1",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre1',im))
-    filtre_2 = tk.Button(frame6, text = "filtre 2",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre2',im))
-    filtre_3 = tk.Button(frame8, text = "filtre 3",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre3',im))
-    filtre_4 = tk.Button(frame8, text = "filtre 4",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre4',im))
+    filtre_1 = tk.Button(filters_toplvl, text = "Flouter x2",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre1',im))
+    filtre_2 = tk.Button(filters_toplvl, text = "Affûter",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre2',im))
+    filtre_3 = tk.Button(filters_toplvl, text = "Noir et Blanc",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre3',im))
+    filtre_4 = tk.Button(filters_toplvl, text = "Flippant",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre4',im))
+    filtre_5 = tk.Button(filters_toplvl, text = "Flouter",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre5',im))
+    filtre_6 = tk.Button(filters_toplvl, text = "Contraster",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre6',im))
+    filtre_7 = tk.Button(filters_toplvl, text = "Gaufrer",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre7',im))
+    filtre_8 = tk.Button(filters_toplvl, text = "Flippant x2",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre8',im))
 
-    filtre_1.pack(side=tk.RIGHT,ipadx=10)
-    filtre_2.pack(side=tk.LEFT,ipadx=10)
-    filtre_3.pack(side=tk.LEFT,ipadx=10,padx=10)
-    filtre_4.pack(side=tk.LEFT,ipadx=10,padx=10) 
+    filtre_3.pack(ipadx=5,pady=3)
+    filtre_5.pack(ipadx=5,pady=3)
+    filtre_1.pack(ipadx=5,pady=3)
+    filtre_2.pack(ipadx=5,pady=3) 
+    
+    filtre_6.pack(ipadx=5,pady=3)
+    filtre_7.pack(ipadx=5,pady=3)
+    filtre_4.pack(ipadx=5,pady=3)
+    filtre_8.pack(ipadx=5,pady=3)
