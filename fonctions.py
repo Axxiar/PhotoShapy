@@ -5,8 +5,7 @@ import os
 import time
 import webbrowser as web
 import traceback
-from toplevels import t_rotate_window
-from toplevels import t_filters_window
+from toplevels import *
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 

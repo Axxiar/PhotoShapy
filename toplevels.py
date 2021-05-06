@@ -70,8 +70,6 @@ def t_rotate_window(master,lbl,im):
     right_rotate = tk.Button(frame6, text = "↩",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:rotatest('left',im))
     left_rotate_button = tk.Button(frame6, text = "↪",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:rotatest('right',im))
 
-    scale = tk.Scale(frame7,orient=tk.HORIZONTAL)
-
     retourner_lbl = tk.Label(frame8,bg='#053f5e',text="Retourner",font=('Consolas',15),fg='#ffd700')
     retourner_lbl.pack(side=tk.TOP,pady=25)
 
@@ -82,7 +80,6 @@ def t_rotate_window(master,lbl,im):
 
     right_rotate.pack(side=tk.RIGHT,ipadx=10)
     left_rotate_button.pack(side=tk.LEFT,ipadx=10)
-    scale.pack(side=tk.BOTTOM)
     horizontal_flip_button.pack(side=tk.LEFT,ipadx=10,padx=10)
     vertical_flip_button.pack(side=tk.LEFT,ipadx=10,padx=10) 
 
