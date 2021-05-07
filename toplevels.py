@@ -136,7 +136,7 @@ def t_filters_window(master, lbl, im):
     frame8.pack(pady=20)
 
     filtre_lbl = tk.Label(frame5,bg='#053f5e',text="CHOISIR UN FILTRE",font=('Consolas',15),fg='#ffd700')
-    filtre_lbl.pack(side=tk.TOP,ipady=10,pady=8)
+    filtre_lbl.pack(ipadx=40,ipady=2,pady=2)
 
     filtre_1 = tk.Button(filters_toplvl, text = "Flouter x2",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre1',im))
     filtre_2 = tk.Button(filters_toplvl, text = "Affûter",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre2',im))
@@ -147,12 +147,12 @@ def t_filters_window(master, lbl, im):
     filtre_7 = tk.Button(filters_toplvl, text = "Gaufrer",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre7',im))
     filtre_8 = tk.Button(filters_toplvl, text = "Flippant x2",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre8',im))
 
-    filtre_3.pack(ipady=85,pady=3,expand=tk.YES)
-    filtre_5.pack(ipady=0.2,pady=3,expand=tk.YES)
+    filtre_3.pack(ipady=1,pady=3,expand=tk.YES)
+    filtre_5.pack(ipady=1,pady=3,expand=tk.YES)
     filtre_1.pack(ipady=1,pady=3,expand=tk.YES)
     filtre_2.pack(ipady=1,pady=3,expand=tk.YES) 
     
     filtre_6.pack(ipady=1,pady=3,expand=tk.YES)
     filtre_7.pack(ipady=1,pady=3,expand=tk.YES)
     filtre_4.pack(ipady=1,pady=3,expand=tk.YES)
-    filtre_8.pack(ipady=1,pady=3,expand=tk.YES)
+    filtre_8.pack(side=tk.RIGHT,ipady=1,pady=3,expand=tk.YES)

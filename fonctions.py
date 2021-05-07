@@ -160,7 +160,6 @@ def f_open_img(default_lbl,default_noimg,lbl):
     except Exception:                                   # mot-clé de python, relié à try : si le code dans try rencontre une erreur alors 
                                               #     (sans doute à cause d'un mauvais format dans notre cas)
         print(traceback.format_exc())
-        messagebox.showwarning("Erreur :","Le format importé est incorrect")
         
 
 
@@ -174,7 +173,7 @@ def f_delete_img(default_lbl,default_noimg,lbl,frame4):
         lbl.configure(image='',width=130,height=43,bg='grey',text="Pas d'image",font=('Consolas'),fg='white')
         del default_im,im
     else:
-        messagebox.showwarning("Erreur :","Veuillez importer une image")
+        print("pas d'image")
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -186,21 +185,14 @@ def f_rotate_window(master,lbl):
     if 'im' and 'default_im' in globals():
         t_rotate_window(master,lbl,im)
     else:
-        messagebox.showwarning("Erreur :","Veuillez importer une image")
+        print("Pas d'image")
 
 def f_filters_window(master,lbl):
     global default_im,im
     if 'im' and 'default_im' in globals():
         t_filters_window(master,lbl,im)
     else:
-        messagebox.showwarning("Erreur :","Veuillez importer une image")
-
-def f_crop_window(master,lbl):
-    global default_im,im
-    if 'im' and 'default_im' in globals():
-        t_crop_window(master,lbl,im)
-    else:
-        messagebox.showwarning("Erreur :","Veuillez importer une image")
+        print("Pas d'image")
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
