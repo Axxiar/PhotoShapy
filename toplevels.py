@@ -122,7 +122,7 @@ def t_filters_window(master, lbl, im):
     filters_toplvl.title("Filtres")
     filters_toplvl.config(bg='#053f5e')
     filters_toplvl.geometry("300x750")
-    filters_toplvl.geometry("+350+150")
+    filters_toplvl.geometry("+450+150")
 
     frame5 = tk.Frame(filters_toplvl,bg='#053f5e')
     frame6 = tk.Frame(filters_toplvl,bg='#053f5e')
@@ -135,8 +135,8 @@ def t_filters_window(master, lbl, im):
     frame7.pack(pady=20)
     frame8.pack(pady=20)
 
-    filtre_lbl = tk.Label(frame5,bg='#053f5e',text="CHOISIR UN FILTRE",font=('Consolas',15),fg='#ffd700')
-    filtre_lbl.pack(ipadx=40,ipady=2,pady=2)
+    filtre_lbl = tk.Label(filters_toplvl,bg='#053f5e',text="CHOISIR UN FILTRE",font=('Consolas',15),fg='#ffd700')
+    filtre_lbl.pack(side=tk.TOP,ipadx=50)
 
     filtre_1 = tk.Button(filters_toplvl, text = "Flouter x2",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre1',im))
     filtre_2 = tk.Button(filters_toplvl, text = "Affûter",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre2',im))
@@ -147,12 +147,12 @@ def t_filters_window(master, lbl, im):
     filtre_7 = tk.Button(filters_toplvl, text = "Gaufrer",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre7',im))
     filtre_8 = tk.Button(filters_toplvl, text = "Flippant x2",font=('Consolas 20 bold'),bg="#115173",fg="#ffd700",command=lambda:filtretest('filtre8',im))
 
-    filtre_3.pack(ipady=1,pady=3,expand=tk.YES)
-    filtre_5.pack(ipady=1,pady=3,expand=tk.YES)
-    filtre_1.pack(ipady=1,pady=3,expand=tk.YES)
-    filtre_2.pack(ipady=1,pady=3,expand=tk.YES) 
+    filtre_3.pack(ipady=1,ipadx=2,pady=3)
+    filtre_5.pack(ipady=1,ipadx=47,pady=3)
+    filtre_1.pack(ipady=1,ipadx=24,pady=3)
+    filtre_2.pack(ipady=1,ipadx=47,pady=3) 
     
-    filtre_6.pack(ipady=1,pady=3,expand=tk.YES)
-    filtre_7.pack(ipady=1,pady=3,expand=tk.YES)
-    filtre_4.pack(ipady=1,pady=3,expand=tk.YES)
-    filtre_8.pack(side=tk.RIGHT,ipady=1,pady=3,expand=tk.YES)
+    filtre_6.pack(ipady=1,ipadx=24,pady=3)
+    filtre_7.pack(ipady=1,ipadx=47,pady=3)
+    filtre_4.pack(ipady=1,ipadx=39,pady=3)
+    filtre_8.pack(ipady=1,ipadx=17,pady=3)
