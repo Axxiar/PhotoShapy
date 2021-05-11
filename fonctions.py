@@ -45,7 +45,7 @@ def f_modify(default_lbl,default_noimg,lbl,import_button,modify_button,delete_bu
     
     back = tk.Button(frame5, text = "<",font=('Consolas',20,'bold'),bg="#ffd700",fg="#115173",command=lambda:f_back_menu(default_lbl,default_noimg,lbl,frame2,frame4,frame5,master))
 
-    crop = tk.Button(frame5, text = "Rogner",font=('Consolas'),bg="#115173",fg="#ffd700",command=lambda:f_crop_window(master,lbl))
+    crop = tk.Button(frame5, text = "Rogner",font=('Consolas'),bg="#115173",fg="#ffd700")
     rotate = tk.Button(frame5, text = "Pivoter",font=('Consolas'),bg="#115173",fg="#ffd700",command=lambda:f_rotate_window(master,lbl))
     filters = tk.Button(frame5, text = "Filtres",font=('Consolas'),bg="#115173",fg="#ffd700",command=lambda:f_filters_window(master,lbl))
     adjust = tk.Button(frame5, text = "Ajuster (RGB)",font=('Consolas'),bg="#115173",fg="#ffd700")
@@ -150,7 +150,7 @@ def f_open_img(default_lbl,default_noimg,lbl):
             diff = 60 - im.height
             im = im.resize((im.width + diff , 60))
 
-        
+        im.filename = filename
         photoim = ImageTk.PhotoImage(im)             # on charge l'image en élément ImageTk qu'on stocke dans im
                 
         lbl.configure(image=photoim,bg='grey',height=im.height+10,width=im.width+10,text="")  # on rajoute l'image au label default_lbl 
@@ -160,8 +160,6 @@ def f_open_img(default_lbl,default_noimg,lbl):
     except Exception:                                   # mot-clé de python, relié à try : si le code dans try rencontre une erreur alors 
                                               #     (sans doute à cause d'un mauvais format dans notre cas)
         print(traceback.format_exc())
-        messagebox.showwarning("Erreur :","Le format importé est incorrect")
-
         
 
 
@@ -193,6 +191,13 @@ def f_filters_window(master,lbl):
     global default_im,im
     if 'im' and 'default_im' in globals():
         t_filters_window(master,lbl,im)
+    else:
+        print("Pas d'image")
+
+def f_crop_window(master,lbl):
+    global default_im,im
+    if 'im' and 'default_im' in globals():
+        t_crop_window(master,lbl,im)
     else:
         print("Pas d'image")
 # ----------------------------------------------------------------------------------------------------------------------------------------

@@ -8,6 +8,7 @@ import webbrowser as web
 
 
 def t_rotate_window(master,lbl,im):
+    print(im)
     global image
     image = Image.open(im.filename)
     
