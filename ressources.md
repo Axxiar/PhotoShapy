@@ -1,3 +1,5 @@
+### There are links to resources we used to make this project :
+
 - http://tkinter.fdex.eu/index.html
 - https://python-pillow.org/
 - https://coderslegacy.com/python/libraries-in-python/python-tkinter-filedialog/
