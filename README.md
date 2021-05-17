@@ -8,7 +8,6 @@ PhotoShape est un éditeur basique d'images en python
 - [ ] Adjust (RGB colors)
 - [X] Rotate
 - [ ] Crop
-- [ ] ~~Resize~~
 - [ ] ~~Draw~~
 - [ ] Keyboard shortcuts
 
