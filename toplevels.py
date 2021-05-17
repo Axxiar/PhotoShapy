@@ -1,14 +1,11 @@
 import tkinter as tk                                       
-from tkinter import filedialog, messagebox
+
 from PIL import Image,ImageTk,ImageFilter,ImageOps
-import os
-import time
-import webbrowser as web
+# ----------------------------------------------------------------------------------------------------------------------------------------
 
 
 
 def t_rotate_window(master,lbl,im):
-    print(im)
     global image
     image = Image.open(im.filename)
     
@@ -140,12 +137,9 @@ def t_filters_window(master, lbl, im):
     frame = tk.Frame(filters_toplvl,bg='#053f5e')
     frame1 = tk.Frame(filters_toplvl,bg='#053f5e')
     frame2 = tk.Frame(filters_toplvl,bg='#053f5e')
-    # frame8 = tk.Frame(filters_toplvl,bg='#053f5e')
-
-
-    frame.pack(ipady=5)
+    frame3 = tk.Frame(filters_toplvl,bg='#053f5e')
     
-    # frame8.pack(pady=5)
+    frame.pack(ipady=5)
 
     filtre_lbl = tk.Label(frame,bg='#053f5e',text="CHOISIR UN FILTRE",font=('Consolas',25),fg='#ffd700')
     filtre_lbl.pack(side=tk.TOP,ipady=10,pady=8)
@@ -170,6 +164,14 @@ def t_filters_window(master, lbl, im):
     filtre_7.pack(ipady=1,pady=5,side=tk.LEFT)
     filtre_8.pack(ipady=1,pady=5,side=tk.RIGHT)
 
+    frame3.pack()
+
+    confirm_button = tk.Button(frame3, text = "V",font=('Consolas 15 bold'),bg="#115173",fg="green")
+    close_button = tk.Button(frame3, text = "X",font=('Consolas 15 bold'),bg="#115173",fg="red")
+    confirm_button.pack(side=tk.LEFT,padx=5,ipadx=3)
+    close_button.pack(side=tk.RIGHT,padx=5,ipadx=3)
+# ----------------------------------------------------------------------------------------------------------------------------------------
+
 
 def t_crop_window(master,lbl,im):
     crop_toplvl = tk.Toplevel(master)
@@ -177,3 +179,12 @@ def t_crop_window(master,lbl,im):
     crop_toplvl.config(bg='#053f5e')
     crop_toplvl.geometry("380x530")
     crop_toplvl.geometry("+350+150")
+
+
+    frame5 = tk.Frame(crop_toplvl,bg='#053f5e')
+
+    confirm_button = tk.Button(frame5, text = "V",font=('Consolas 15 bold'),bg="#115173",fg="green")
+    close_button = tk.Button(frame5, text = "X",font=('Consolas 15 bold'),bg="#115173",fg="red")
+    confirm_button.pack(side=tk.LEFT,padx=5,ipadx=3)
+    close_button.pack(side=tk.RIGHT,padx=5,ipadx=3)
+# ----------------------------------------------------------------------------------------------------------------------------------------
