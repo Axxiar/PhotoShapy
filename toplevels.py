@@ -1,8 +1,15 @@
-import tkinter as tk                                       
+import tkinter as tk
+from tkinter import filedialog                              
 
 from PIL import Image,ImageTk,ImageFilter,ImageOps
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
+
+def save_im():
+    global image
+
+    yo = f.asksaveasfilename()
+    image.save(r'C:\Users\ridf\Desktop')
 
 
 def t_rotate_window(master,lbl,im):
@@ -166,7 +173,7 @@ def t_filters_window(master, lbl, im):
 
     frame3.pack()
 
-    confirm_button = tk.Button(frame3, text = "V",font=('Consolas 15 bold'),bg="#115173",fg="green")
+    confirm_button = tk.Button(frame3, text = "V",font=('Consolas 15 bold'),bg="#115173",fg="green",command=save_im)
     close_button = tk.Button(frame3, text = "X",font=('Consolas 15 bold'),bg="#115173",fg="red")
     confirm_button.pack(side=tk.LEFT,padx=5,ipadx=3)
     close_button.pack(side=tk.RIGHT,padx=5,ipadx=3)
