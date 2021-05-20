@@ -7,9 +7,9 @@ from PIL import Image,ImageTk,ImageFilter,ImageOps
 
 def save_im():
     global image
-
-    yo = f.asksaveasfilename()
-    image.save(r'C:\Users\ridf\Desktop')
+    
+    yo = filedialog.asksaveasfilename()
+    image.save()
 
 
 def t_rotate_window(master,lbl,im):
