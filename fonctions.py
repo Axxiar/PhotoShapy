@@ -1,5 +1,4 @@
 ###########  IMPORTATION DES MODULES  ###########
-import abc
 import tkinter as tk                                       
 from tkinter import filedialog, messagebox
 from PIL import Image,ImageTk

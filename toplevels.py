@@ -1,15 +1,17 @@
 ###########  IMPORTATION DES MODULES  ###########
 import tkinter as tk                                       
-
+from tkinter import filedialog,messagebox
 from PIL import Image,ImageTk,ImageFilter,ImageOps
 
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 def save_im():
     global image
-    
-    yo = filedialog.asksaveasfilename()
-    image.save()
+    savepath = filedialog.asksaveasfilename(filetypes=[(".png", '*.png'),(".jpeg","*.jpeg"),("","")],title="Sauvegarder Sous")
+    try:
+        image.save(str(savepath))
+    except ValueError:
+        messagebox.showinfo("Erreur","Mauvaise extension")
 
 
 def t_rotate_window(master,lbl,im):
