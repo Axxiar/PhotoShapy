@@ -4,7 +4,6 @@ from tkinter import filedialog, messagebox
 from PIL import Image,ImageTk
 import PIL
 import os
-import time
 import webbrowser as web
 from toplevels import *
 import datetime as dt
@@ -41,7 +40,6 @@ def f_close(event):
     alerte = messagebox.askokcancel(title="Attention", message="Es-tu sûr de vouloir quitter ?\n\n*Le travail non sauvegardé sera irrecupérable*")
     if alerte == True:              # alerte = True si l'utilisateur clique sur OK
         messagebox.showinfo(title='Au revoir',message="Merci de nous avoir utilisé :)") # on affiche une autre boîte avec du texte seulement pour dire au revoir
-        time.sleep(1)                           # on met le programme en pause pendant 1 seconde
         event.widget.destroy()                  # on détruit le widget où à été appelée la fonction
     else:                           # alerte = False si l'utilisateur clique sur CANCEL
         pass                                    # on ne fait rien (la boîte est fermée par défaut) ... retour à l'application
