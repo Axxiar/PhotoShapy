@@ -39,7 +39,7 @@ def f_close(event):
     #   message sera le texte qu'elle affiche
     alerte = messagebox.askokcancel(title="Attention", message="Es-tu sûr de vouloir quitter ?\n\n*Le travail non sauvegardé sera irrecupérable*")
     if alerte == True:              # alerte = True si l'utilisateur clique sur OK
-        messagebox.showinfo(title='Au revoir',message="Merci de nous avoir utilisé :)") # on affiche une autre boîte avec du texte seulement pour dire au revoir
+        messagebox.showwarning(title='Au revoir',message="Merci de nous avoir utilisé :)") # on affiche une autre boîte avec du texte seulement pour dire au revoir
         event.widget.destroy()                  # on détruit le widget où à été appelée la fonction
     else:                           # alerte = False si l'utilisateur clique sur CANCEL
         pass                                    # on ne fait rien (la boîte est fermée par défaut) ... retour à l'application
@@ -173,7 +173,7 @@ def f_open_img(default_lbl,default_noimg,lbl):
 
         
     except PIL.UnidentifiedImageError:  # en cas d'erreur du à une mauvaise extension, on l'indique à l'utilisateur via une alerte
-        messagebox.showinfo('Erreur','Le format choisi est incorrecte')
+        messagebox.showwarning('Erreur','Le format choisi est incorrecte')
 
     except AttributeError:      # erreur qui semble être levée quand on annule l'importation d'une image
         pass
@@ -212,7 +212,7 @@ def f_delete_img(default_lbl,default_noimg,lbl):
         del default_im,im
 
     else:       # si aucune image n'a étée importée, on ne peut pas la supprimer donc on prévient l'utilisateur
-        messagebox.showinfo('Erreur',"Pas d'image")
+        messagebox.showwarning('Erreur',"Pas d'image")
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -227,7 +227,7 @@ def f_rotate_window(master,lbl):
     if 'im' and 'default_im' in globals():
         t_rotate_window(master,lbl,im)
     else:
-        messagebox.showinfo('Erreur',"Pas d'image")
+        messagebox.showwarning('Erreur',"Pas d'image")
 
 def f_filters_window(master,lbl):
     """attributions : bouton 'Filtres' (l.afpt)
@@ -237,7 +237,7 @@ def f_filters_window(master,lbl):
     if 'im' and 'default_im' in globals():
         t_filters_window(master,lbl,im)
     else:
-        messagebox.showinfo('Erreur',"Pas d'image")
+        messagebox.showwarning('Erreur',"Pas d'image")
 
 def f_crop_window(master,lbl):
     """attributions : bouton 'Rogner' (l.afpt)
@@ -247,7 +247,7 @@ def f_crop_window(master,lbl):
     if 'im' and 'default_im' in globals():
         t_crop_window(master,lbl,im)
     else:
-        messagebox.showinfo('Erreur',"Pas d'image")
+        messagebox.showwarning('Erreur',"Pas d'image")
 # ----------------------------------------------------------------------------------------------------------------------------------------
 
 

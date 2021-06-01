@@ -13,7 +13,7 @@ def save_im():
     try:
         image.save(str(savepath))
     except ValueError:
-        messagebox.showinfo("Erreur","Mauvaise extension")
+        messagebox.showwarning("Erreur","Mauvaise extension")
 
 
 def t_rotate_window(master,lbl,im):
