@@ -49,7 +49,7 @@ def f_modify(default_lbl,default_noimg,lbl,import_button,modify_button,delete_bu
     description : supprime les boutons Importer,Modifier,Effacer et les remplace par les boutons permettant de modifier la photo
     paramètres  : tous les paramètres pris sont des widgets créés dans 'master_wndow.py' 
                     sur lesquels ont va faire des modifications"""
-    global back,filters,crop,rotate,adjust  # on rend global les variables qui vont stocker les nouveaux boutons, pour éviter les problèmes 
+    global back,filters,crop,rotate  # on rend global les variables qui vont stocker les nouveaux boutons, pour éviter les problèmes 
 
     dest(import_button,modify_button,delete_button)     # on détruit les boutons de l'accueil
     
@@ -60,24 +60,22 @@ def f_modify(default_lbl,default_noimg,lbl,import_button,modify_button,delete_bu
     crop = tk.Button(frame5, text = "Rogner",font=('Consolas'),bg="#115173",fg="#ffd700",command=lambda:f_crop_window(master,lbl))
     rotate = tk.Button(frame5, text = "Pivoter",font=('Consolas'),bg="#115173",fg="#ffd700",command=lambda:f_rotate_window(master,lbl))
     filters = tk.Button(frame5, text = "Filtres",font=('Consolas'),bg="#115173",fg="#ffd700",command=lambda:f_filters_window(master,lbl))
-    adjust = tk.Button(frame5, text = "Ajuster (RGB)",font=('Consolas'),bg="#115173",fg="#ffd700")
 
     back.pack(side=tk.BOTTOM,pady=10,ipadx=30)
     crop.pack(ipadx=65,ipady=5,pady=10)
     rotate.pack(ipadx=60,ipady=5,pady=10)
     filters.pack(ipadx=60,ipady=5,pady=10)
-    adjust.pack(ipadx=33,ipady=5,pady=10)
 
 def f_back_menu(default_lbl,default_noimg,lbl,frame2,frame4,frame5,master):
     """attributions : bouton '<' dans la fonction f_modify() / l.57
     description : fait l'inverse de 'f_close()' à savoir : supprimer les boutons de modifications des photos pour remettre les boutons de l'accueil"""
     global import_button, modify_button, delete_button
-    global back,filters,crop,rotate,adjust
+    global back,filters,crop,rotates
     
     # ici on va chercher à éviter une erreur qui a lieue à l'ouverture parceque 
     # les boutons bac, filters, crop .... n'existe pas encore
     try:
-        dest(back,filters,crop,rotate,adjust)
+        dest(back,filters,crop,rotate)
     except:
         pass
         

@@ -5,15 +5,19 @@ from PIL import Image,ImageTk,ImageFilter,ImageOps,ImageDraw
 
 # ----------------------------------------------------------------------------------------------------------------------------------------
 def close(event):
+    """attributions : l.69 / l.154 / l.236
+    description : détruit le widget sur lequel la fonction est attribué"""
     event.widget.destroy()
 
 def save_im():
+    """attributions : l.100 / l.186 / l.253
+    description : ouvre l'explorateur de fichier et permet d'enregistrer l'image 'im' au chemin spécifié par l'utilisateur"""
     global image
-    savepath = filedialog.asksaveasfilename(filetypes=[(".png", '*.png'),(".jpeg","*.jpeg"),("","")],title="Sauvegarder Sous")
+    savepath = filedialog.asksaveasfilename(title="Sauvegarder Sous")
     try:
         image.save(str(savepath))
     except ValueError:
-        messagebox.showwarning("Erreur","Mauvaise extension")
+        messagebox.showwarning("Erreur","Mauvaise extension\nil faut la préciser : 'exemple.png'")
 
 
 def t_rotate_window(master,lbl,im):
@@ -224,8 +228,8 @@ def t_crop_window(master,lbl,im):
     crop_toplvl = tk.Toplevel(master)
     crop_toplvl.title("Rogner")
     crop_toplvl.config(bg='#053f5e')
-    crop_toplvl.geometry("380x530")
-    crop_toplvl.geometry("+350+150")
+    crop_toplvl.geometry("700x250")
+    crop_toplvl.geometry("+150+500")
     crop_toplvl.focus()
     crop_toplvl.bind('<Escape>',close)
 
@@ -235,10 +239,17 @@ def t_crop_window(master,lbl,im):
     lbl.bind('<Button-1>',click)
 
 
-    frame = tk.Frame(crop_toplvl,bg='#053f5e')
-    frame.pack()
+    frame1 = tk.Frame(crop_toplvl,bg='#053f5e')
+    frame1.pack(pady=30)
+    frame2 = tk.Frame(crop_toplvl,bg='#053f5e')
+    frame2.pack(pady=20)
 
-    confirm_button = tk.Button(frame, text = "V",font=('Consolas 15 bold'),bg="#115173",fg="green",command=save_im)
-    close_button = tk.Button(frame, text = "X",font=('Consolas 15 bold'),bg="#115173",fg="red")
+    info_text = tk.Label(frame1,font=('Consolas 11'),bg="#053f5e",fg="#ffd700",
+    text="""Cliquez sur la photo de gauche pour sélectionner le rognage\n\nPensez à enregistrer ave le bouton V ci-dessous\npuis à réouvrir votre image modifier pour pouvoir la recouper""")
+
+    info_text.pack()
+
+    confirm_button = tk.Button(frame2, text = "V",font=('Consolas 15 bold'),bg="#115173",fg="green",command=save_im)
+    close_button = tk.Button(frame2, text = "X",font=('Consolas 15 bold'),bg="#115173",fg="red")
     confirm_button.pack(side=tk.LEFT,padx=5,ipadx=3)
     close_button.pack(side=tk.RIGHT,padx=5,ipadx=3)
