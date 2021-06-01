@@ -1,7 +1,8 @@
 .vscode/
 __pycache__/
 
+logs.txt
 test.py
 test2.py
-
-logs.txt
+test.png
+tenor.gif
