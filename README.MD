@@ -4,10 +4,10 @@ PhotoShapy is a basic image editore in Python.
 
 ## Actions :
 - [X] Load images
-- [ ] Save to different extension
-- [ ] Adjust (RGB colors)
+- [X] Save to different extension
+- [ ] ~~Adjust (RGB colors)~~
 - [X] Rotate
-- [ ] Crop
+- [X] Crop (doesn't work perfectly)
 - [ ] ~~Draw~~
 - [ ] Keyboard shortcuts
 
