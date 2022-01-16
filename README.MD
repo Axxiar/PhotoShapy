@@ -1,5 +1,6 @@
 # PhotoShapy
 PhotoShapy is a basic image editor in Python.
+
 *Please consider that this code is not optimized and may not work.*
 
 ## Actions :
