@@ -17,7 +17,7 @@ Il s'agit d'un projet de **NSI Première**
 
 Filtres :
 
-- [X] Blur effect
+- [X] Flou
 - [X] Noir & Blanc
 - [X] Emboss
 - [X] Sharpen
